@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/popup_bg"
+    >
+
+    <LinearLayout
+        android:id="@+id/popup_anima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="25dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_dialog">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提示"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:textColor="@color/text_color"
+            android:layout_gravity="left"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textSize="14sp"
+            android:text="确定"
+            android:padding="20dp"
+
+            android:textColor="@color/green"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

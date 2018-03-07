@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.shizhefei.view.viewpager.SViewPager
+            android:id="@+id/tab_main_viewpager"
+            android:layout_width="match_parent"
+             android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            >
+        </com.shizhefei.view.viewpager.SViewPager>
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <com.shizhefei.view.indicator.FixedIndicatorView
+        android:id="@+id/tab_main_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="#FFFFFF"
+        >
+
+    </com.shizhefei.view.indicator.FixedIndicatorView>
+
+
+</LinearLayout>

@@ -1,0 +1,3 @@
+# Referenced at E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\manifests\full\debug\AndroidManifest.xml:51
+-keep class com.fala.emba.team.app.MyApplication { <init>(...); }
+

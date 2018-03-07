@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8f000000">
+
+    <RelativeLayout
+        android:id="@+id/popup_anima"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/title"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.fala.teacher.view.ImageViewPlus
+                android:id="@+id/logo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button_text_default"
+                android:text="@string/app_name"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/logo"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:paddingTop="25dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="25dp"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.2"
+            android:text="确认退出？"
+            />
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/content"
+            android:background="@color/line_bg"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/line2">
+            <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textColor="@color/button_text_default"
+                android:background="@drawable/selector_bg_theme_white_with_corner"
+                android:textSize="16sp"
+                android:text="确认"/>
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textColor="#bfbfbf"
+                android:textSize="16sp"
+                android:background="@drawable/selector_bg_theme_white_with_corner"
+                android:text="取消"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

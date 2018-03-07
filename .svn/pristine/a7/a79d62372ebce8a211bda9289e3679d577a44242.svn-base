@@ -1,0 +1,142 @@
+package com.fala.emba.team.activity.adapter;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.fala.emba.team.R;
+import com.fala.emba.team.app.GlideApp;
+import com.fala.emba.team.bean.ActivityComm;
+import com.fala.emba.team.util.ImageLoaderUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 活动列表适配器
+ */
+public class ActivityListAdapter extends BaseAdapter {
+    private Context context;
+    private List<ActivityComm.ActivitiesBean> activitiesBeans = new ArrayList<>();
+
+    public ActivityListAdapter(Context context, List<ActivityComm.ActivitiesBean> activitiesBeans) {
+        this.context = context;
+        this.activitiesBeans = activitiesBeans;
+    }
+
+    @Override
+    public int getCount() {
+        return activitiesBeans.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return activitiesBeans.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @SuppressLint("InflateParams")
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_activity, null);
+            holder.tv_activity_name = convertView.findViewById(R.id.tv_activity_name);
+            holder.tv_association_name = convertView.findViewById(R.id.tv_association_name);
+            holder.tv_activity_start_time = convertView.findViewById(R.id.tv_activity_start_time);
+            holder.tv_activity_end_time = convertView.findViewById(R.id.tv_activity_end_time);
+            holder.tv_activity_address = convertView.findViewById(R.id.tv_activity_address);
+            holder.iv_activity_fervent = convertView.findViewById(R.id.iv_activity_fervent);
+            holder.tv_activity_member_limit_title = convertView.findViewById(R.id.tv_activity_member_limit_title);
+            holder.tv_activity_member_limit = convertView.findViewById(R.id.tv_activity_member_limit);
+            holder.tv_activity_member_count_title = convertView.findViewById(R.id.tv_activity_member_count_title);
+            holder.tv_activity_member_count = convertView.findViewById(R.id.tv_activity_member_count);
+            holder.iv_activity_cove = convertView.findViewById(R.id.iv_activity_cove);
+            holder.iv_activity_state = convertView.findViewById(R.id.iv_activity_state);
+
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.tv_activity_name.setText(activitiesBeans.get(position).getName());
+        holder.tv_association_name.setText(activitiesBeans.get(position).getOrientedAssociations());
+        holder.tv_activity_start_time.setText(activitiesBeans.get(position).getStartTime());
+        holder.tv_activity_end_time.setText(activitiesBeans.get(position).getEndTime());
+        holder.tv_activity_address.setText(activitiesBeans.get(position).getPlace());
+        holder.tv_activity_member_limit.setText(activitiesBeans.get(position).getMemberLimit());
+        holder.tv_activity_member_count.setText(String.valueOf(activitiesBeans.get(position).getMemberCount()));
+
+        String url = activitiesBeans.get(position).getCoverUrl();
+//        GlideApp.with(context)
+//                .asBitmap()
+//                .load(url)
+//                .placeholder(R.mipmap.icon_activity_default)  //设置底图
+//                .fitCenter()
+//                .transition(BitmapTransitionOptions.withCrossFade(3000))  //淡入淡出
+//                .into(holder.iv_activity_cove);
+        ImageLoaderUtils.displayImageDefault3(activitiesBeans.get(position).getCoverUrl(),holder.iv_activity_cove);
+
+        //先判断
+        if (activitiesBeans.get(position).getIsOverActivity().equals("Y")) {
+            //已结束
+            holder.iv_activity_state.setImageResource(R.mipmap.icon_activity_end);
+            holder.iv_activity_fervent.setImageResource(R.mipmap.icon_activity_file_gray);
+        } else {
+            if (activitiesBeans.get(position).getIsOverApply().equals("Y")) {
+                //已截止报名
+                holder.iv_activity_state.setImageResource(R.mipmap.icon_activity_close);
+                holder.iv_activity_fervent.setImageResource(R.mipmap.icon_activity_file_gray);
+                holder.tv_activity_member_limit_title.setTextColor(Color.parseColor("#A7A7A7"));
+                holder.tv_activity_member_limit.setTextColor(Color.parseColor("#A7A7A7"));
+                holder.tv_activity_member_count_title.setTextColor(Color.parseColor("#A7A7A7"));
+                holder.tv_activity_member_count.setTextColor(Color.parseColor("#A7A7A7"));
+            } else {
+                //报名中
+                holder.iv_activity_state.setImageResource(R.mipmap.icon_activity_running);
+                holder.iv_activity_fervent.setImageResource(R.mipmap.icon_activity_file_red);
+
+                holder.tv_activity_member_limit_title.setTextColor(Color.parseColor("#F62C36"));
+                holder.tv_activity_member_limit.setTextColor(Color.parseColor("#F62C36"));
+                holder.tv_activity_member_count_title.setTextColor(Color.parseColor("#F62C36"));
+                holder.tv_activity_member_count.setTextColor(Color.parseColor("#F62C36"));
+            }
+        }
+
+        return convertView;
+    }
+
+    private static final class ViewHolder {
+
+        private ImageView iv_activity_cove;
+        private TextView tv_activity_name;
+        private TextView tv_association_name;
+        private TextView tv_activity_start_time;
+        private TextView tv_activity_end_time;
+        private TextView tv_activity_address;
+        private ImageView iv_activity_state;                  //完成结束状态
+
+        private ImageView iv_activity_fervent;
+
+        private TextView tv_activity_member_limit_title;
+        private TextView tv_activity_member_limit;
+        private TextView tv_activity_member_count_title;
+        private TextView tv_activity_member_count;
+
+
+    }
+
+}

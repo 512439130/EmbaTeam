@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Library</string>
+    <style name="PopupAnimaFade" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/basepopup_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/basepopup_fade_out</item>
+    </style>
+</resources>

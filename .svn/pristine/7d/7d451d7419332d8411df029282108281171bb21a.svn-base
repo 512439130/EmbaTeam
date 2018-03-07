@@ -1,0 +1,54 @@
+package com.fala.emba.team.activity;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class MainActivity extends BaseActivity {
+    private CircleImageView circleImageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected String getTitleText() {
+        return "首页";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected boolean isShowBacking() {
+        return false;
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    @Override
+    protected void inits() {
+        initView();
+    }
+
+    private void initView() {
+        circleImageView = findView(R.id.circle_image);
+
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fala.emba.team.test">
+
+    <uses-sdk android:minSdkVersion="20" android:targetSdkVersion="26" />
+
+    <application android:debuggable="true" >
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation android:name="android.support.test.runner.AndroidJUnitRunner"
+                     android:targetPackage="com.fala.emba.team"
+                     android:handleProfiling="false"
+                     android:functionalTest="false"
+                     android:label="Tests for com.fala.emba.team"/>
+</manifest>

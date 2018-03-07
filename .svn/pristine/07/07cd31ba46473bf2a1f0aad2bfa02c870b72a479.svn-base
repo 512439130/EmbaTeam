@@ -1,0 +1,130 @@
+package com.fala.emba.team.activity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.MD5Util;
+import com.fala.emba.team.view.popup.DialogPopup;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/5.
+ * 关于
+ */
+
+public class AboutActivity extends BaseActivity {
+    private static final String TAG = "AboutActivity";
+
+    private RelativeLayout rlContact;
+    private DialogPopup dialogPopup;
+
+    @Override
+    protected String getTitleText() {
+        return "关于";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_about;
+    }
+
+    @Override
+    protected void inits() {
+        initView();
+        initListener();
+
+        //test();  短信测试
+    }
+
+    private void test() {
+        String account = "sbaemba@hnlg";
+        String password = "123456";
+        long timestamp = new Date().getTime();
+        String mobiles = "13160677911,13160670257,13750050617";
+        String content = "【华工EMBA校友会通知】亲爱的诚邀您的出席，报名请回复短信：“班级+姓名”。华工EMBA教育中心";
+        System.out.println(account +MD5Util.obtainSmallMD516(password) + mobiles + content + timestamp);
+        String digest =  MD5Util.obtainSmallMD532(account +MD5Util.obtainBigMD516(password) + mobiles + content + timestamp);
+
+        System.out.println("短信接口测试：account =" + account);
+        System.out.println("短信接口测试：timestamp =" + timestamp);
+        System.out.println("短信接口测试：mobiles =" + mobiles);
+        System.out.println("短信接口测试：content =" + content);
+        System.out.println("短信接口测试：digest =" + digest);
+
+
+        Map<String, String> params = new HashMap<>();
+        params.put("account",account);
+        params.put("timestamp",String.valueOf(timestamp));
+        params.put("mobiles",mobiles);
+        params.put("content",content);
+        params.put("digest",digest);
+
+        OkHttpUtils
+                .post()
+                .url("http://webservice.wjxjt.com:8080/sms/sendsms.jsp?")
+                .params(params)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                    }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                    }
+                });
+    }
+
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    private void initView() {
+        rlContact = findView(R.id.about_contact);
+        dialogPopup = new DialogPopup(AboutActivity.this, new DialogPopup.DialogCallBack() {
+            @Override
+            public void submit() {
+                dialogPopup.dismiss();
+
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Consts.PHONE_NUMBER)));//跳转到拨号界面并携带电话号码
+            }
+
+            @Override
+            public void cancel() {
+                dialogPopup.dismiss();
+            }
+        });
+        dialogPopup.setContentText(Consts.PHONE_NUMBER);
+        dialogPopup.setSubmitText("拨打");
+    }
+
+    private void initListener() {
+        rlContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogPopup.showPopupWindow();
+            }
+        });
+    }
+}

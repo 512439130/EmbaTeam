@@ -1,0 +1,223 @@
+package com.fala.emba.team.activity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.activity.adapter.PushHistoryListAdapter;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.PushListComm;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.google.gson.Gson;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import okhttp3.Call;
+
+
+/**
+ * Created by Administrator on 2017/12/10.
+ * 消息通知
+ */
+
+public class PushHistoryListActivity extends BaseActivity {
+    private static final String TAG = "CompleteActivityFragment";
+    private RefreshLayout mRefreshLayout;
+    private ListView listViewActivity;
+    private PushHistoryListAdapter pushHistoryListAdapter;
+    private UserComm.UserBean userBean;
+    private List<PushListComm.NoticesBean> noticesBeanList;
+    private int pageOffset = 1;
+    private LinearLayout llLayoutNull;
+    private MaterialHeader materialHeader;
+    private ClassicsFooter classicsFooter;
+
+    @Override
+    protected String getTitleText() {
+        return "历史通知";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_push_history;
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    @Override
+    protected void inits() {
+        getShareData();
+        initView();
+        initRefreshOrLoadMore();
+        initListener();
+        mRefreshLayout.autoRefresh();  //初次加载自动刷新
+    }
+
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void initListener() {
+        listViewActivity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LogManager.d(TAG, "你点击了：" + position);
+                String data = new Gson().toJson(noticesBeanList.get(position));
+                Intent intent = new Intent(mActivity, PushResultActivity.class);
+                intent.putExtra(Consts.INTENT_FLAG,Consts.PUSH_HISTORY_FALG);
+                intent.putExtra(Consts.PUSH_HISTORY_FALG_VALUE,data);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getShareData() {
+        String data = SharePrefUtil.getString(mActivity, Consts.USER_INFO, null);
+        userBean = new Gson().fromJson(data, UserComm.UserBean.class);
+    }
+
+
+    private void initView() {
+        mRefreshLayout = findView(R.id.refresh_layout);
+        listViewActivity = findView(R.id.push_list_view);
+        noticesBeanList = new ArrayList<>();
+        materialHeader = (MaterialHeader) mRefreshLayout.getRefreshHeader();
+        classicsFooter = (ClassicsFooter) mRefreshLayout.getRefreshFooter();
+        mRefreshLayout.setRefreshHeader(materialHeader);
+        mRefreshLayout.setRefreshFooter(classicsFooter);
+
+        llLayoutNull = findView(R.id.ll_layout_null);
+    }
+
+    private void initRefreshOrLoadMore() {
+        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                noticesBeanList.clear();
+                pageOffset = 1;
+                doAssociationRequest();
+
+            }
+        });
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                pageOffset++;
+                doAssociationRequest();
+            }
+        });
+
+        materialHeader.setShowBezierWave(true); //打开背景:
+        mRefreshLayout.setEnableHeaderTranslationContent(true);//内容跟随偏移
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);  //内容不满1页时，不可加载更多
+        mRefreshLayout.setEnableAutoLoadmore(false);  //关闭自动加载更多
+        mRefreshLayout.setDisableContentWhenRefresh(true);  //设置是否开启在刷新时候禁止操作内容视图
+    }
+
+    private void doAssociationRequest() {
+        //恢复状态
+        mRefreshLayout.setEnableLoadmore(true);
+        mRefreshLayout.resetNoMoreData();
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", userBean.getPhone());  //手机号
+        params.put("page", String.valueOf(pageOffset));
+        params.put("size", "8");  //每页6条
+        OkHttpUtils
+                .post()
+                .url(RequestConst.app_notice_history)
+                .params(params)
+                .addToken(SharePrefUtil.getString(mActivity, Consts.TOKEN, null))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        mRefreshLayout.finishRefresh();
+                        mRefreshLayout.finishLoadmore();
+                    }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        PushListComm pushListComm = new Gson().fromJson(response, PushListComm.class);
+
+                        if (pushListComm != null) {
+                            if (pushListComm.getStatusCode() == 1) {
+                                if (pushListComm.getNotices().size() != 0) {
+                                    llLayoutNull.setVisibility(View.GONE);
+                                    listViewActivity.setVisibility(View.VISIBLE);
+                                    if (noticesBeanList.size() == 0) {
+                                        mRefreshLayout.finishRefresh(100);
+                                        noticesBeanList = pushListComm.getNotices();
+                                        initAdapterData();
+                                    } else {
+                                        mRefreshLayout.finishLoadmore(100);
+                                        noticesBeanList.addAll(pushListComm.getNotices());
+                                        pushHistoryListAdapter.notifyDataSetChanged();//更新
+                                    }
+                                } else {
+
+                                    mRefreshLayout.finishRefresh();
+                                    mRefreshLayout.finishLoadmore();
+                                    if(pageOffset == 1){
+                                        llLayoutNull.setVisibility(View.VISIBLE);
+                                        listViewActivity.setVisibility(View.GONE);
+                                    }
+                                    mRefreshLayout.finishLoadmoreWithNoMoreData();
+                                    mRefreshLayout.setEnableLoadmore(false);
+
+                                }
+                            } else {
+                                switch (pushListComm.getStatusCode()) {
+                                    case 301://系统异常，请联系管理员
+                                        ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                        break;
+                                    case 302://校验失败，token无效
+                                        break;
+                                    case 303://校验失败，token过期
+                                        SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                        mLoginOvertimePopup.showPopupWindow();
+                                        break;
+                                    default:
+                                        ToastManager.showShortText(mActivity, pushListComm.getMessage());
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                });
+
+    }
+
+    private void initAdapterData() {
+        pushHistoryListAdapter = new PushHistoryListAdapter(mActivity, noticesBeanList);
+        listViewActivity.setAdapter(pushHistoryListAdapter);
+    }
+
+
+}

@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">EMBA协会通</string>
+
+
+
+    <!--edit_text-->
+    <string name="filter_user_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@.</string>
+    <string name="filter_pass_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="filter_repass_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+
+    <string name="title_base">加载中...</string>
+    <string name="tab_key_down_two_value">再按一次，退出程序</string>
+
+
+    <!--custom_date_picker-->
+    <string name="cancle">取消</string>
+    <string name="messageTitle">请选择时间</string>
+    <string name="commit">确定</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+
+
+    <string name="ok">OK</string>
+    <string name="no">NO</string>
+
+    <!--permission-->
+    <string name="permission_calendar">Calendar</string>
+    <string name="permission_calendar_storage">Microphone, Storage</string>
+
+    <string name="permission_camera">Camera</string>
+    <string name="permission_contact_sms">Contact, SMS</string>
+
+    <string name="permission_phone">Phone State, Location</string>
+    <string name="describe_anywhere">Where the permission application is not in the Activity/Fragment call, but commissioned a class to call.</string>
+
+    <string name="permission_sensors">Sensors</string>
+    <string name="describe_rationale">Please first deny a permission, and then apply again when you can see the rationale effect.</string>
+
+    <string name="title_annotation_request">Annotation callback result</string>
+    <string name="title_listener_request">Listener callback result</string>
+    <string name="title_other_request">Request Anywhere</string>
+    <string name="title_rationale_request">Rationale before request</string>
+
+    <string name="message_setting_back">The user came back from the settings</string>
+
+    <string name="successfully">Successful</string>
+    <string name="failure">获取权限失败</string>
+
+    <string name="title_dialog">Tips</string>
+    <string name="message_permission_failed">We need some of the necessary authority to be prohibited, please authorize us.</string>
+
+
+</resources>

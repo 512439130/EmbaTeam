@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="24"
+    build-mode="COLD"
+    density="xxxhdpi"
+    format="10"
+    ir-eligibility="COMPATIBLE"
+    plugin-version="3.0.1"
+    timestamp="1512847004358"
+    token="-4672532135078776496"
+    verifier="COLD_SWAP_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="294" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="15" />
+    <task
+        name="verifier"
+        duration="2" />
+
+    <artifact
+        location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-16-44_debug.apk"
+        type="SPLIT_MAIN" />
+
+    <build
+        build-mode="FULL"
+        timestamp="1512841575409"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-01-46-15_debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_REMOVED"
+        timestamp="1512842816698"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-06-56_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_ADDED"
+        timestamp="1512843287111"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-14-47_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512843485059"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-18-05_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512843578291"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-19-38_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512843639588"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-20-39_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512843763814"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-22-43_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512843909630"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-25-09_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512844055835"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-27-35_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512844219612"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-30-19_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1512844457077"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-34-17_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512844634113"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-37-14_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512844950093"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-42-30_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512845065830"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-44-25_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512845211969"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-46-51_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1512845474138"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-51-14_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1512845974129"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-02-59-34_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1512846056001"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-00-56_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1512846184192"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-03-04_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_TYPE_CHANGE"
+        timestamp="1512846290296"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-04-50_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_TYPE_CHANGE"
+        timestamp="1512846815675"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-13-35_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1512847004358"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\workspace\android_workspace\EmbaTeam\app\build\outputs\apk\debug\emba_team_1.0_2017-12-10-03-16-44_debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+
+</instant-run>

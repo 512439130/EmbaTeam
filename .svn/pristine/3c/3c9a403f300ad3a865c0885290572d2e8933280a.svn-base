@@ -1,0 +1,5 @@
+STORE_FILE=../profession_product.jks
+STORE_PASSWORD=professionfala2017
+KEY_ALIAS=falaprofession
+KEY_PASSWORD=professionfala2017
+OUTPUT_DIR=//E:\//workspace//apk_workspace//professional_network

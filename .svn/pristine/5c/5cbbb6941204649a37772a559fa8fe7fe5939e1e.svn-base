@@ -1,0 +1,98 @@
+package com.fala.emba.team.base.usage;
+
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.fragment.BaseFragment;
+
+
+/**
+ * Fragment基类
+ * Created by SoMustYY on 2017/7/22.
+ */
+public abstract class BaseViewFragment extends BaseFragment {
+    private ImageView mLeftTv;
+    private TextView mRightTv;
+
+
+
+
+    @Override
+    protected void onCreateView(Bundle savedInstanceState) {
+        super.onCreateView(savedInstanceState);
+        setContentView(getLayoutId());  //填充布局
+
+
+
+        inits();
+        mLeftTv = findView(R.id.iv_return);
+        mRightTv = findView(R.id.tv_title_right);
+
+        if (isShowLeft()) {
+            mLeftTv.setVisibility(View.VISIBLE);
+        } else {
+            mLeftTv.setVisibility(View.INVISIBLE);
+        }
+        if (isShowRightTv()) {
+            mRightTv.setVisibility(View.VISIBLE);
+        } else {
+            mRightTv.setVisibility(View.INVISIBLE);
+        }
+
+
+
+    }
+
+    /**
+     * this activity layout res
+     * 设置layout布局,在子类重写该方法.
+     *
+     * @return res layout xml id
+     */
+    protected abstract int getLayoutId();
+
+    /**
+     * 初始化
+     */
+    protected abstract void inits();
+
+    /**
+     * 设置URL
+     */
+    protected abstract String setUrl();
+
+
+
+    /**
+     * 是否显示返回键
+     *
+     * @return
+     */
+    protected boolean isShowLeft() {
+        return true;
+    }
+
+    /**
+     * 是否显示右边带图片textview
+     *
+     * @return
+     */
+    protected boolean isShowRightImgTv() {
+        return true;
+    }
+
+    /**
+     * 是否显示右边不带图片textview
+     *
+     * @return
+     */
+    protected boolean isShowRightTv() {
+        return true;
+    }
+
+
+}

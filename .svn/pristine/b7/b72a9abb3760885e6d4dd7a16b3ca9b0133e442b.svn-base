@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "55",
+                        "endOffsets": "67"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "2238",
+                        "endColumns": "55",
+                        "endOffsets": "2289"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "55",
+                        "endOffsets": "67"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "2238",
+                        "endColumns": "55",
+                        "endOffsets": "2289"
+                    }
+                }
+            ]
+        }
+    ]
+}

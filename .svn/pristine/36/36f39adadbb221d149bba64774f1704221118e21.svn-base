@@ -1,0 +1,76 @@
+com.scwang.smartrefresh.header.test
+int attr dhDrawable1 0x7f010000
+int attr dhDrawable2 0x7f010001
+int attr dhDrawable3 0x7f010002
+int attr fgvBackColor 0x7f010003
+int attr fgvBallSpeed 0x7f010004
+int attr fgvBlockHorizontalNum 0x7f010005
+int attr fgvBottomTextSize 0x7f010006
+int attr fgvLeftColor 0x7f010007
+int attr fgvMaskBottomText 0x7f010008
+int attr fgvMaskTopText 0x7f010009
+int attr fgvMiddleColor 0x7f01000a
+int attr fgvRightColor 0x7f01000b
+int attr fgvTextGameOver 0x7f01000c
+int attr fgvTextLoading 0x7f01000d
+int attr fgvTextLoadingFinished 0x7f01000e
+int attr fgvTopTextSize 0x7f01000f
+int attr mhPrimaryColor 0x7f010010
+int attr mhShadowColor 0x7f010011
+int attr mhShadowRadius 0x7f010012
+int attr mhShowBezierWave 0x7f010013
+int attr msvPrimaryColor 0x7f010014
+int attr msvViewportHeight 0x7f010015
+int attr phAccentColor 0x7f010016
+int attr phPrimaryColor 0x7f010017
+int attr shhDropHeight 0x7f010018
+int attr shhLineWidth 0x7f010019
+int attr shhText 0x7f01001a
+int attr thPrimaryColor 0x7f01001b
+int attr wshAccentColor 0x7f01001c
+int attr wshPrimaryColor 0x7f01001d
+int attr wshShadowColor 0x7f01001e
+int attr wshShadowRadius 0x7f01001f
+int string app_name 0x7f020000
+int[] styleable DropboxHeader { 0x7f010000, 0x7f010001, 0x7f010002 }
+int styleable DropboxHeader_dhDrawable1 0
+int styleable DropboxHeader_dhDrawable2 1
+int styleable DropboxHeader_dhDrawable3 2
+int[] styleable FunGameHeader { 0x7f010006, 0x7f010008, 0x7f010009, 0x7f01000f }
+int styleable FunGameHeader_fgvBottomTextSize 0
+int styleable FunGameHeader_fgvMaskBottomText 1
+int styleable FunGameHeader_fgvMaskTopText 2
+int styleable FunGameHeader_fgvTopTextSize 3
+int[] styleable FunGameHitBlockHeader { 0x7f010004, 0x7f010005 }
+int styleable FunGameHitBlockHeader_fgvBallSpeed 0
+int styleable FunGameHitBlockHeader_fgvBlockHorizontalNum 1
+int[] styleable FunGameView { 0x7f010003, 0x7f010007, 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e }
+int styleable FunGameView_fgvBackColor 0
+int styleable FunGameView_fgvLeftColor 1
+int styleable FunGameView_fgvMiddleColor 2
+int styleable FunGameView_fgvRightColor 3
+int styleable FunGameView_fgvTextGameOver 4
+int styleable FunGameView_fgvTextLoading 5
+int styleable FunGameView_fgvTextLoadingFinished 6
+int[] styleable MaterialHeader { 0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013 }
+int styleable MaterialHeader_mhPrimaryColor 0
+int styleable MaterialHeader_mhShadowColor 1
+int styleable MaterialHeader_mhShadowRadius 2
+int styleable MaterialHeader_mhShowBezierWave 3
+int[] styleable MountanScenceView { 0x7f010014, 0x7f010015 }
+int styleable MountanScenceView_msvPrimaryColor 0
+int styleable MountanScenceView_msvViewportHeight 1
+int[] styleable PhoenixHeader { 0x7f010016, 0x7f010017 }
+int styleable PhoenixHeader_phAccentColor 0
+int styleable PhoenixHeader_phPrimaryColor 1
+int[] styleable StoreHouseHeader { 0x7f010018, 0x7f010019, 0x7f01001a }
+int styleable StoreHouseHeader_shhDropHeight 0
+int styleable StoreHouseHeader_shhLineWidth 1
+int styleable StoreHouseHeader_shhText 2
+int[] styleable TaurusHeader { 0x7f01001b }
+int styleable TaurusHeader_thPrimaryColor 0
+int[] styleable WaveSwipeHeader { 0x7f01001c, 0x7f01001d, 0x7f01001e, 0x7f01001f }
+int styleable WaveSwipeHeader_wshAccentColor 0
+int styleable WaveSwipeHeader_wshPrimaryColor 1
+int styleable WaveSwipeHeader_wshShadowColor 2
+int styleable WaveSwipeHeader_wshShadowRadius 3

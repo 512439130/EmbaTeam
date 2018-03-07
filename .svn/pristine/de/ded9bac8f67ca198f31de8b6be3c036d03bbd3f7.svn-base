@@ -1,0 +1,433 @@
+package com.fala.emba.team.util;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+
+
+import com.fala.emba.team.R;
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration.Builder;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
+/**
+ * Created by SoMustYY on 2017/7/5.
+ * Imageloader工具类
+ */
+
+public class ImageLoaderUtils {
+
+
+    private static final int MAX_DISK_CACHE = 1024 * 1024 * 50;
+    private static final int MAX_MEMORY_CACHE = 1024 * 1024 * 10;
+    /**
+     * 是否显示日志
+     */
+    public static boolean isShowLog = false;
+
+
+    /**
+     * 初始化ImageLoaderConfiguration
+     *
+     * @param context
+     */
+    public static void initConfiguration(Context context) {
+
+        Builder configuration = new ImageLoaderConfiguration.Builder(context);
+        configuration
+                // default = device screen dimensions
+                // 缓存到磁盘中的图片宽高
+                .diskCacheExtraOptions(480, 800, null)
+                // .taskExecutor(null)
+                // .taskExecutorForCachedImages()
+                .threadPoolSize(3)
+                // default 线程优先级
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                // default
+                .tasksProcessingOrder(QueueProcessingType.FIFO)
+                // // default设置在内存中缓存图像的多种尺寸
+                // 加载同一URL图片时,imageView从小变大时,从内存缓存中加载
+                .denyCacheImageMultipleSizesInMemory()
+                // 超过设定的缓存大小时,内存缓存的清除机制
+                .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
+                // 内存的一个大小
+                .memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13)
+                // default 将图片信息缓存到该路径下
+                // default 磁盘缓存的大小
+                .diskCacheSize(MAX_DISK_CACHE)
+                // 磁盘缓存文件的个数
+                .diskCacheFileCount(100)
+                // 磁盘缓存的文件名的命名方式//一般使用默认值 (获取文件名称的hashcode然后转换成字符串)或MD5 new
+                // Md5FileNameGenerator()源文件的名称同过md5加密后保存
+                .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())
+                // 设置默认的图片加载
+                // 使用默认的图片解析器
+                .imageDecoder(new BaseImageDecoder(true)) // default
+                .defaultDisplayImageOptions(DisplayImageOptions.createSimple());
+        if (isShowLog) {
+            configuration.writeDebugLogs();
+        }
+        ImageLoader.getInstance().init(configuration.build());
+    }
+
+    /**
+     * 常规DisplayImageOptions
+     *
+     * @return
+     */
+    public static DisplayImageOptions initOptions1() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                // 设置图片在下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.icon_user_default)
+                .showImageOnLoading(R.mipmap.icon_user_default)
+                // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.icon_user_default)
+                // 设置下载的图片是否缓存在内存中
+                .cacheInMemory(true)
+                //启用内存缓存
+                .cacheOnDisk(true)
+
+                // 是否考虑JPEG图像EXIF参数（旋转，翻转）
+                .considerExifParams(true)
+
+                // 设置图片以如何的编码方式显示
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                // 设置图片的解码类型//
+                .bitmapConfig(Bitmap.Config.RGB_565)
+
+                .resetViewBeforeLoading(true)
+
+                // 是否图片加载好后渐入的动画时间
+                .displayer(new FadeInBitmapDisplayer(3000))
+
+//                .delayBeforeLoading(300)
+
+                // 构建完成
+                .build();
+        return options;
+    }
+
+    /**
+     * 常规DisplayImageOptions
+     *
+     * @return
+     */
+    public static DisplayImageOptions initOptions2() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                // 设置图片在下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.icon_association_default)
+                .showImageOnLoading(R.mipmap.icon_association_default)
+                // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.icon_association_default)
+                // 设置下载的图片是否缓存在内存中
+                .cacheInMemory(true)
+                //启用内存缓存
+                .cacheOnDisk(true)
+
+                // 是否考虑JPEG图像EXIF参数（旋转，翻转）
+                .considerExifParams(true)
+
+                // 设置图片以如何的编码方式显示
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                // 设置图片的解码类型//
+                .bitmapConfig(Bitmap.Config.RGB_565)
+
+                .resetViewBeforeLoading(true)
+
+                // 是否图片加载好后渐入的动画时间
+                .displayer(new FadeInBitmapDisplayer(3000))
+
+                // 构建完成
+                .build();
+        return options;
+    }
+
+    /**
+     * 常规DisplayImageOptions
+     *
+     * @return
+     */
+    public static DisplayImageOptions initOptions3() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                // 设置图片在下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.icon_activity_default)
+                .showImageOnLoading(R.mipmap.icon_activity_default)
+                // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.icon_activity_default)
+                // 设置下载的图片是否缓存在内存中
+                .cacheInMemory(true)
+                //启用内存缓存
+                .cacheOnDisk(true)
+
+                // 是否考虑JPEG图像EXIF参数（旋转，翻转）
+                .considerExifParams(true)
+
+                // 设置图片以如何的编码方式显示
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                // 设置图片的解码类型//
+                .bitmapConfig(Bitmap.Config.RGB_565)
+
+                .resetViewBeforeLoading(true)
+
+                // 是否图片加载好后渐入的动画时间
+                .displayer(new FadeInBitmapDisplayer(3000))
+
+                // 构建完成
+                .build();
+        return options;
+    }
+
+
+    public static DisplayImageOptions initBitmapOptions() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                // 设置图片在下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.icon_logo)
+                .showImageOnLoading(R.mipmap.icon_logo)
+                // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.icon_logo)
+                // 设置下载的图片是否缓存在内存中
+                .cacheInMemory(true)
+                //启用内存缓存
+                .cacheOnDisk(true)
+
+                // 是否考虑JPEG图像EXIF参数（旋转，翻转）
+                .considerExifParams(true)
+
+                // 设置图片以如何的编码方式显示
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                // 设置图片的解码类型//
+                .bitmapConfig(Bitmap.Config.RGB_565)
+
+                .resetViewBeforeLoading(true)
+                // 构建完成
+                .build();
+        return options;
+    }
+
+
+    /**
+     * 渐现常规显示（网络）
+     *
+     * @param url
+     * @param target
+     */
+    public static void displayImageDefault1(String url, ImageView target) {
+        ImageLoader.getInstance().displayImage(url, target, initOptions1());
+    }
+    /**
+     * 渐现常规显示（网络）
+     *
+     * @param url
+     * @param target
+     */
+    public static void displayImageDefault2(String url, ImageView target) {
+        ImageLoader.getInstance().displayImage(url, target, initOptions2());
+    }
+
+    /**
+     * 渐现常规显示（网络）
+     *
+     * @param url
+     * @param target
+     */
+    public static void displayImageDefault3(String url, ImageView target) {
+        ImageLoader.getInstance().displayImage(url, target, initOptions3());
+    }
+
+
+    /**
+     * 获取Bitmap
+     *
+     * @param url
+     * @return
+     */
+    public static Bitmap obtainBitmap(String url) {
+        return ImageLoader.getInstance().loadImageSync(url, initBitmapOptions());
+    }
+
+
+    /**
+     * 渐现常规显示（本地）
+     *
+     * @param drawableId
+     * @param target
+     */
+    public static void displayLocalImageDefault(int drawableId, ImageView target) {
+        String imageUri = "drawable://" + drawableId;
+        ImageLoader.getInstance().displayImage(imageUri, target, initOptions1());
+    }
+
+    /**
+     * 渐现常规显示（本地）
+     *
+     * @param localPath
+     * @param target
+     */
+    public static void displayLocalImageDefault(String localPath, ImageView target,int cornerRadiusPixels) {
+        String imageUri = "file://" + localPath;
+        ImageLoader.getInstance().displayImage(imageUri, target, getOptionFillet(cornerRadiusPixels));
+    }
+
+
+    /**
+     * 自定义显示
+     *
+     * @param url
+     * @param target
+     * @param options
+     */
+    public static void displayImageCustom(String url, ImageView target, DisplayImageOptions options) {
+        ImageLoader.getInstance().displayImage(url, target, options);
+    }
+
+    /**
+     * 显示圆形
+     *
+     * @param url
+     * @param target
+     */
+    public static void displayImageCircle(String url, ImageView target) {
+        ImageLoader.getInstance().displayImage(url, target, getOptionsHeader());
+    }
+
+    //显示圆角
+    public static void displayImageFillet(String url, ImageView target, int cornerRadiusPixels) {
+        ImageLoader.getInstance().displayImage(url, target, getOptionFillet(cornerRadiusPixels));
+    }
+
+    /**
+     * 图片详情页专用
+     *
+     * @param url
+     * @param target
+     * @param loadingListener
+     */
+    public static void displayImageDetail(String url, ImageView target, SimpleImageLoadingListener loadingListener) {
+        ImageLoader.getInstance().displayImage(url, target, getOptionExactlyType(), loadingListener);
+    }
+
+    /**
+     * 图片列表页专用
+     *
+     * @param url
+     * @param target
+     * @param loadingResource
+     * @param loadingListener
+     * @param progressListener
+     */
+    public static void displayImageList(String url, ImageView target, int loadingResource, SimpleImageLoadingListener loadingListener, ImageLoadingProgressListener progressListener) {
+        ImageLoader.getInstance().displayImage(url, target, getOptionsPictureList(loadingResource), loadingListener, progressListener);
+    }
+
+    /**
+     * 自定义加载中图片
+     *
+     * @param url
+     * @param target
+     * @param loadingResource
+     */
+    public static void displayImageWithLoadingPicture(String url, ImageView target, int loadingResource) {
+        ImageLoader.getInstance().displayImage(url, target, getOptionsPictureList(loadingResource));
+    }
+
+    /**
+     * 当使用WebView加载大图的时候，使用本方法现下载到本地然后再加载
+     *
+     * @param url
+     * @param loadingListener
+     */
+    public static void loadImageFromLocalCache(String url, SimpleImageLoadingListener loadingListener) {
+        ImageLoader.getInstance().loadImage(url, getOptionExactlyType(), loadingListener);
+    }
+
+    /**
+     * 加载头像专用Options，默认加载中、失败和空url为 ic_loading_small
+     *
+     * @return
+     */
+    public static DisplayImageOptions getOptionsHeader() {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .displayer(new Displayer(0))//圆形
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .showImageForEmptyUri(R.mipmap.ic_launcher)
+                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.mipmap.ic_launcher)
+                .build();
+    }
+
+    /**
+     * 无缓存，不保存内存
+     * @param loadingResource
+     * @return
+     */
+    public static DisplayImageOptions getOptionFillet(int loadingResource) {
+        return new DisplayImageOptions.Builder()
+                // 设置下载的图片是否缓存在内存中
+                .cacheInMemory(false)
+                //启用内存缓存
+                .cacheOnDisk(false)
+                // 是否图片加载好后渐入的动画时间
+                .displayer(new FadeInBitmapDisplayer(4000))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .showImageForEmptyUri(R.mipmap.ic_launcher)
+                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.mipmap.ic_launcher)
+                .build();
+    }
+
+
+    /**
+     * 设置图片放缩类型为模式EXACTLY，用于图片详情页的缩放
+     *
+     * @return
+     */
+    public static DisplayImageOptions getOptionExactlyType() {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .resetViewBeforeLoading(true)
+                .considerExifParams(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .build();
+    }
+
+    /**
+     * 加载图片列表专用，加载前会重置View
+     * {@link com.nostra13.universalimageloader.core.DisplayImageOptions.Builder#resetViewBeforeLoading} = true
+     *
+     * @param loadingResource
+     * @return
+     */
+    public static DisplayImageOptions getOptionsPictureList(int loadingResource) {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .resetViewBeforeLoading(true)
+                .showImageOnLoading(loadingResource)
+                .showImageForEmptyUri(loadingResource)
+                .showImageOnFail(loadingResource)
+                .build();
+    }
+
+
+
+
+    /*String imageUri = "http://site.com/image.png"; // from Web
+    String imageUri = "file:///mnt/sdcard/image.png"; // from SD card
+    String imageUri = "content://media/external/audio/albumart/13"; // from content provider
+    String imageUri = "assets://image.png"; // from assets
+    String imageUri = "drawable://" + R.drawable.image; // from drawables (only images, non-9patch) */
+}

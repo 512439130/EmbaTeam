@@ -1,0 +1,66 @@
+package com.fala.emba.team.activity.sms;
+
+import android.content.Context;
+
+import com.fala.emba.team.activity.RegisterActivity;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/11.
+ * 短信发送管理
+ */
+
+public class SmsManager {
+    private static final String TAG = "SmsManager";
+    private static String account = "sbaemba@hnlg";
+    private static String pswd = "Cb3gFmqn";
+    private static String needstatus = "true";
+    private static String smsVerificationNumber = String.valueOf(obtainSixRandom());
+    private static String msg = "【EMBA协会通】亲爱的用户，您的验证码为："+ smsVerificationNumber + ",感谢使用！";
+
+    public static String doSendSms(final Context context, String mobile){
+        Map<String, String> params = new HashMap<>();
+        params.put("account",account);
+        params.put("pswd",pswd);
+        params.put("mobile",mobile);
+        params.put("msg",msg);
+        params.put("needstatus",needstatus);
+        OkHttpUtils
+                .post()
+                .url("http://120.77.49.16/sms/HttpSendSM?")
+                .params(params)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                    }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        ToastManager.showShortText(context,"短信发送成功");
+                        SharePrefUtil.saveString(context, Consts.SMS_VERIFICATION,smsVerificationNumber);
+                    }
+                });
+        return smsVerificationNumber;
+
+    }
+
+    /**
+     * 获取6位随机数（验证码生成）
+     * @return
+     */
+    private static int obtainSixRandom(){
+        return (int)((Math.random()*9+1)*100000);
+    }
+}

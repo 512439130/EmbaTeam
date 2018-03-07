@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshHeader\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "2238",
+                        "endColumns": "55",
+                        "endOffsets": "2289"
+                    }
+                }
+            ]
+        }
+    ]
+}

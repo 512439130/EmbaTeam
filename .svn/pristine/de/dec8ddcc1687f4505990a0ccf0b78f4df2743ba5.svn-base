@@ -1,0 +1,194 @@
+package com.fala.emba.team.activity;
+
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.UpdateUserInfo;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.DeviceNetUtil;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.fala.emba.team.util.time.CountDownTimerUtils;
+import com.google.gson.Gson;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/5.
+ */
+
+public class UpdatePhoneActivity extends BaseActivity {
+    private static final String TAG = "UpdatePhoneActivity";
+    private final static int PHONE_REQUEST_CODE = 2 ;
+    private EditText etPhone;
+    private EditText etVerification;
+    private Button obtainVerificationCode;
+    private Button btnUpdatePhone;
+
+    private CountDownTimerUtils myCountDownTimer;
+    private String phone = null;
+    private String newPhone = null;
+    private String verification = null;
+    private String myCode = null;  //验证码的真值
+
+    @Override
+    protected String getTitleText() {
+        return "更换手机号码";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_update_phone;
+    }
+
+    @Override
+    protected void inits() {
+        initView();
+        initListener();
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    private void initView() {
+        etPhone = findView(R.id.et_phone);
+        etVerification = findView(R.id.et_verification);
+        obtainVerificationCode = findView(R.id.obtain_verification_code);
+        btnUpdatePhone = findView(R.id.btn_update_phone);
+    }
+
+    private void initListener() {
+        myCountDownTimer = new CountDownTimerUtils(obtainVerificationCode, 60000, 1000);
+        obtainVerificationCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = etPhone.getText().toString().trim();
+                if (!TextUtils.isEmpty(phone)) {
+                    if (phone.length() == 11) {
+                        myCountDownTimer.start();
+                        myCode = Consts.SMS_DEFAULT;  //默认通用验证码
+                    } else {
+                        ToastManager.showShortText(UpdatePhoneActivity.this, "亲，请输入正确的手机号");
+                    }
+                } else {
+                    ToastManager.showShortText(UpdatePhoneActivity.this, "亲，手机号不能为空");
+                }
+            }
+        });
+
+
+        btnUpdatePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtainEditTextValue();
+                if (!TextUtils.isEmpty(newPhone) && !TextUtils.isEmpty(verification)) {
+                    if (checkVerification(verification)) {//验证码正确
+                        checkNetWork();
+                    } else {
+                        etVerification.setText("");
+                        ToastManager.showShortText(UpdatePhoneActivity.this, "验证码输入有误，请重新输入");
+                    }
+                } else {
+                    ToastManager.showShortText(UpdatePhoneActivity.this, "信息不能为空");
+                }
+            }
+        });
+    }
+
+    /**
+     * 获取用户输入的值
+     */
+    private void obtainEditTextValue() {
+        String data = SharePrefUtil.getString(UpdatePhoneActivity.this,Consts.USER_INFO,null);
+        UserComm.UserBean userBean = new Gson().fromJson(data, UserComm.UserBean.class);
+        phone = userBean.getPhone();
+        newPhone = etPhone.getText().toString().trim();
+        verification = etVerification.getText().toString().trim();
+    }
+
+    /**
+     * 校验验证码
+     */
+    private boolean checkVerification(String userCode) {
+        return myCode != null && userCode != null && myCode.equals(userCode);
+    }
+
+    /**
+     * 检查网络
+     */
+    private void checkNetWork() {
+        if (DeviceNetUtil.isConnected(UpdatePhoneActivity.this)) {
+            doUpdatePhone();
+        } else {
+            LogManager.e(TAG, Consts.CONNECTION_CLOSE);
+            ToastManager.showShortText(UpdatePhoneActivity.this, Consts.CONNECTION_CLOSE);
+            startSettingActivity();
+        }
+    }
+
+    private void doUpdatePhone() {
+        mLoadingDialog.show();
+        btnUpdatePhone.setClickable(false);//设置button不可以点击
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("newPhone", newPhone);
+
+        OkHttpUtils
+                .post()
+                .url(RequestConst.app_change_phone)
+                .params(params)
+                .addToken(SharePrefUtil.getString(UpdatePhoneActivity.this, Consts.TOKEN, null))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        btnUpdatePhone.setClickable(true);
+                        mLoadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        //updateUserInfo
+                        UpdateUserInfo updateUserInfo = new Gson().fromJson(response, UpdateUserInfo.class);
+
+                        if (updateUserInfo.getStatusCode() == 1) {
+                            ToastManager.showShortText(UpdatePhoneActivity.this, "修改手机号成功");
+                            String data = new Gson().toJson(updateUserInfo.getUser());
+                            SharePrefUtil.saveString(UpdatePhoneActivity.this, Consts.USER_INFO, data);
+                            finish();
+
+                        } else {
+                            btnUpdatePhone.setClickable(true);
+                            ToastManager.showShortText(UpdatePhoneActivity.this, updateUserInfo.getMessage());
+                        }
+                        mLoadingDialog.dismiss();
+                    }
+                });
+
+
+    }
+
+
+}

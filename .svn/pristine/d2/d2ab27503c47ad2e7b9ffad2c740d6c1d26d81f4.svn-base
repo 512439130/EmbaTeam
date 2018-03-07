@@ -1,0 +1,120 @@
+package com.fala.emba.team.activity.push;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.PushCustomData;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.ToastManager;
+import com.google.gson.Gson;
+
+import cn.jpush.android.api.JPushInterface;
+
+/**
+ * Created by SoMustYY on 2017/8/30.
+ */
+
+public class PushResultActivity extends BaseActivity {
+    private static final String TAG = "PushResultActivity：";
+    //push
+    private TextView pushTitle;
+    private TextView pushContent;
+    private TextView pushTime;
+    private TextView pushCompany;
+
+    private String title;
+
+    private String content;
+    private String customContentString;
+
+    private String company;
+    private String sendTime;
+
+    private PushCustomData pushCustomData;
+
+
+
+    @Override
+    protected String getTitleText() {
+        return "通知公告";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_push_result;
+    }
+
+    protected void inits() {
+        initView();
+        getData();
+        initData();
+    }
+
+
+    private void initView() {
+        pushTitle = findView(R.id.push_title);
+        pushContent = findView(R.id.push_content);
+        pushTime = findView(R.id.push_time);
+        pushCompany = findView(R.id.push_company);
+    }
+
+    private void getData() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            title = bundle.getString((JPushInterface.EXTRA_NOTIFICATION_TITLE));  //通知的标题
+            customContentString = bundle.getString(JPushInterface.EXTRA_EXTRA);   //通知的额外
+            LogManager.d(TAG, "customContentString:" + customContentString);
+        }
+        if (customContentString == null) {
+            LogManager.d(TAG, "customContentString == null:");
+        } else {
+            pushCustomData = new Gson().fromJson(customContentString, PushCustomData.class);
+
+            LogManager.d(TAG, "pushCustomData:" + pushCustomData);
+            if (pushCustomData != null) {
+                content = pushCustomData.getNoticeContent();
+                content = content.replaceAll("&nbsp;", Consts.SINGLE_SPACE);
+                content = content.replaceAll("<br/>", Consts.SINGLE_WRAP);
+            }
+        }
+
+
+    }
+
+    private void initData() {
+        //String content = "广东省气象局于07月17日16时17分发布暴雨黄色预警信号，请注意防御。";
+        if (pushCustomData != null) {
+            company = pushCustomData.getNoticeCompany();
+            sendTime = pushCustomData.getNoticeSendTime();
+        }
+        if(title != null){
+            pushTitle.setText(title);
+        }
+        if(content != null){
+            pushContent.setText(content);
+        }
+        if(company != null){
+            pushCompany.setText(company);
+        }
+        if(sendTime != null){
+            pushTime.setText(sendTime);
+        }
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        ToastManager.cancel();
+
+    }
+}

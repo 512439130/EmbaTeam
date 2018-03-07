@@ -1,0 +1,23 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml:1:1-42
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml:1:1-42
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml:1:1-42
+	package
+		ADDED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml:1:11-40
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+uses-sdk
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\LibUtilCode\src\main\AndroidManifest.xml

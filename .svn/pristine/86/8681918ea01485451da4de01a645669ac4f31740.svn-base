@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_selector_pickerview_btn.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\drawable\\selector_pickerview_btn.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_pickerview_slide_in_bottom.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\anim\\pickerview_slide_in_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_layout_basepickerview.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\layout\\layout_basepickerview.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_include_pickerview_topbar.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\layout\\include_pickerview_topbar.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_pickerview_time.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\layout\\pickerview_time.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_pickerview_dialog_scale_in.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\anim\\pickerview_dialog_scale_in.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_pickerview_slide_out_bottom.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\anim\\pickerview_slide_out_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_pickerview_dialog_scale_out.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\anim\\pickerview_dialog_scale_out.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_pickerview_options.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\bundles\\debug\\res\\layout\\pickerview_options.xml"
+    }
+]

@@ -1,0 +1,43 @@
+package com.fala.luofushan.bean;
+
+/**
+ * Created by SoMustYY on 2017/8/30.
+ */
+
+public class PushCustomData {
+
+
+    /**
+     * noticeCompany : this is a test
+     * noticeContent : thisistest<br/>  secondline
+     * noticeSendTime : 2017.10.19 10:27:30
+     */
+
+    private String noticeCompany;
+    private String noticeContent;
+    private String noticeSendTime;
+
+    public String getNoticeCompany() {
+        return noticeCompany;
+    }
+
+    public void setNoticeCompany(String noticeCompany) {
+        this.noticeCompany = noticeCompany;
+    }
+
+    public String getNoticeContent() {
+        return noticeContent;
+    }
+
+    public void setNoticeContent(String noticeContent) {
+        this.noticeContent = noticeContent;
+    }
+
+    public String getNoticeSendTime() {
+        return noticeSendTime;
+    }
+
+    public void setNoticeSendTime(String noticeSendTime) {
+        this.noticeSendTime = noticeSendTime;
+    }
+}

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\release\\layout\\pickerview_time.xml",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\src\\main\\res\\layout\\pickerview_time.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\release\\layout\\layout_basepickerview.xml",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\src\\main\\res\\layout\\layout_basepickerview.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\release\\layout\\include_pickerview_topbar.xml",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\src\\main\\res\\layout\\include_pickerview_topbar.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\build\\intermediates\\res\\merged\\release\\layout\\pickerview_options.xml",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPickerView\\src\\main\\res\\layout\\pickerview_options.xml"
+    }
+]

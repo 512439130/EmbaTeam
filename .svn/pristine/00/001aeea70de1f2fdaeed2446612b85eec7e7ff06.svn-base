@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pl\\values-pl.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\905e0c269942f7b9f74e4f68d900b22a\\res\\values-pl\\values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,171,279,402,504,612,698,807,926,1004,1081,1163,1272,1381,1480,1589,1700,1808,1931,2027,2109",
+                        "endColumns": "115,107,122,101,107,85,108,118,77,76,81,108,108,98,108,110,107,122,95,81,100",
+                        "endOffsets": "166,274,397,499,607,693,802,921,999,1076,1158,1267,1376,1475,1584,1695,1803,1926,2022,2104,2205"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,25",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,171,279,402,504,612,698,807,926,1004,1081,1163,1272,1381,1480,1589,1700,1808,1931,2261,2343",
+                        "endColumns": "115,107,122,101,107,85,108,118,77,76,81,108,108,98,108,110,107,122,95,81,100",
+                        "endOffsets": "166,274,397,499,607,693,802,921,999,1076,1158,1267,1376,1475,1584,1695,1803,1926,2022,2338,2439"
+                    }
+                },
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-pl\\values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,136,210",
+                        "endColumns": "80,73,78",
+                        "endOffsets": "131,205,284"
+                    },
+                    "to": {
+                        "startLines": "21,22,23",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "2027,2108,2182",
+                        "endColumns": "80,73,78",
+                        "endOffsets": "2103,2177,2256"
+                    }
+                }
+            ]
+        }
+    ]
+}

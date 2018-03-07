@@ -1,0 +1,259 @@
+package com.fala.emba.team.activity;
+
+import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.activity.sms.SmsManager;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.RegisterComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.Base64Utils;
+import com.fala.emba.team.util.DeviceNetUtil;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.MD5Util;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.fala.emba.team.util.time.CountDownTimerUtils;
+import com.google.gson.Gson;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/1.
+ * 注册页面
+ */
+
+public class RegisterActivity extends BaseActivity {
+    private static final String TAG = "RegisterActivity";
+
+
+    private Button obtainVerificationCode;
+    //new倒计时对象,总共的时间,每隔多少秒更新一次时间
+    private CountDownTimerUtils myCountDownTimer;
+
+
+    private EditText etName;
+    private EditText etPhone;
+    private EditText etVerification;
+    private EditText etPass;
+    private EditText etRePass;
+
+    private String name = null;
+    private String phone = null;
+    private String verification = null;
+    private String pass = null;
+    private String repass = null;
+
+    private String myDefaultCode = null;  //验证码的默认值
+    private String myCode = null;  //手机获取的验证码
+
+
+    private Button btnRegister;
+
+
+    protected String getTitleText() {
+        return "用户注册";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_register;
+    }
+
+    @Override
+    protected boolean isShowBacking() {
+        return true;
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+
+    @Override
+    protected void inits() {
+        initView();
+        initListener();
+    }
+
+
+    private void initView() {
+        obtainVerificationCode = findView(R.id.obtain_verification_code);
+        etName = findView(R.id.et_name);
+        etPhone = findView(R.id.et_phone);
+        etVerification = findView(R.id.et_verification);
+        etPass = findView(R.id.et_pass);
+        etRePass = findView(R.id.et_repass);
+
+        btnRegister = findView(R.id.btn_register);
+    }
+
+
+    private void initListener() {
+        myCountDownTimer = new CountDownTimerUtils(obtainVerificationCode, 60000, 1000);
+        //获取验证码
+        obtainVerificationCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = etPhone.getText().toString().trim();
+                if (!TextUtils.isEmpty(phone)) {
+                    if (phone.length() == 11) {
+                        myCountDownTimer.start();
+                        myCode = String.valueOf(SmsManager.obtainSixRandom());
+                        myDefaultCode = Consts.SMS_DEFAULT;  //默认通用验证码
+                        System.out.println("create verification_code:" + myCode);
+                        SmsManager.doSendSms(phone, myCode, new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                ToastManager.showShortText(mActivity, e.getMessage());
+                            }
+                            @Override
+                            public void onResponse(String response, int id) {
+                                LogManager.d(TAG, response);
+                                ToastManager.showShortText(mActivity, "亲，验证码短信已发送~");
+                            }
+                        });
+
+                    } else {
+                        ToastManager.showShortText(mActivity, "亲，请输入正确的手机号");
+                    }
+                } else {
+                    ToastManager.showShortText(mActivity, "亲，手机号不能为空");
+                }
+            }
+        });
+        //注册
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtainEditTextValue();
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(verification) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(repass)) {
+                    if (checkVerification(verification)) {//验证码正确
+                        if (pass.equals(repass)) {  //两次输入是否一致
+                            if (pass.matches(Consts.regex)) {  //手机号中包含英文和字母
+
+                                checkNetWork();
+
+                            } else {
+                                ToastManager.showShortText(mActivity, "密码须为6-16位，数字加字母组合，请重新输入");
+                            }
+                        } else {
+                            ToastManager.showShortText(mActivity, "两次密码不一致");
+                        }
+                    } else {
+                        etVerification.setText("");
+                        ToastManager.showShortText(mActivity, "验证码输入有误，请重新输入");
+                    }
+                } else {
+                    ToastManager.showShortText(mActivity, "信息不能为空");
+                }
+            }
+        });
+    }
+
+    /**
+     * 注册
+     */
+    private void doRegister() {
+        mLoadingDialog.show();
+
+        btnRegister.setClickable(false);//设置button不可以点击
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("password", Base64Utils.encode(MD5Util.obtainBigMD532(pass)));
+        params.put("pwdConfirm", Base64Utils.encode(MD5Util.obtainBigMD532(repass)));
+        params.put("name", name);
+
+        OkHttpUtils
+                .post()
+                .url(RequestConst.app_register)
+                .params(params)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        btnRegister.setClickable(true);
+                        mLoadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        mLoadingDialog.dismiss();//隐藏进度条
+                        LogManager.d(TAG, response);
+                        RegisterComm registerComm = new Gson().fromJson(response, RegisterComm.class);
+                        if (registerComm != null) {
+                            if (registerComm.getStatusCode() == 1) {//注册成功，返回登录页，带回手机号默认填写
+                                ToastManager.showShortText(mActivity, registerComm.getMessage());
+                                SharePrefUtil.saveString(mActivity, Consts.USER_PHONE, phone);
+                                finish();
+                            } else {
+                                btnRegister.setClickable(true);//设置button可以点击
+                                ToastManager.showShortText(mActivity, registerComm.getMessage());
+                            }
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 获取用户输入的值
+     */
+    private void obtainEditTextValue() {
+        name = etName.getText().toString().trim();
+        phone = etPhone.getText().toString().trim();
+        verification = etVerification.getText().toString().trim();
+        pass = etPass.getText().toString().trim();
+        repass = etRePass.getText().toString().trim();
+    }
+
+    /**
+     * 校验验证码
+     */
+    private boolean checkVerification(String userCode) {
+        if (myDefaultCode != null && myCode != null && userCode != null) {
+            if (userCode.equals(myCode) || userCode.equals(myDefaultCode)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 检查网络
+     */
+    private void checkNetWork() {
+        if (DeviceNetUtil.isConnected(mActivity)) {
+            doRegister();
+        } else {
+            LogManager.e(TAG, Consts.CONNECTION_CLOSE);
+            ToastManager.showShortText(mActivity, Consts.CONNECTION_CLOSE);
+            startSettingActivity();
+        }
+    }
+
+
+}

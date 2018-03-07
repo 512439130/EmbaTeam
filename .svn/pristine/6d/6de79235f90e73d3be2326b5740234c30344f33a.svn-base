@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.fala.emba.team"
+        minSdkVersion 20
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.0.0-beta1'
+    compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    testCompile 'junit:junit:4.12'
+    implementation project(':LibCircleImageView')
+    implementation project(':LibEasyPermission')
+    implementation project(':LibOkhttp')
+    implementation project(':LibPopup')
+    implementation project(':LibPullToRefresh')
+    implementation project(':LibViewPagerIndicator')
+    implementation files('libs/commons-codec-1.3.jar')
+    implementation files('libs/gson-2.2.1.jar')
+    implementation files('libs/universal-image-loader-1.9.5.jar')
+}

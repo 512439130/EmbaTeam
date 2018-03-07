@@ -1,0 +1,313 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-pl_values-pl.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-pl\\values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,136,210",
+                        "endColumns": "80,73,78",
+                        "endOffsets": "131,205,284"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-cs_values-cs.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-cs\\values-cs.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,133,204",
+                        "endColumns": "77,70,82",
+                        "endOffsets": "128,199,282"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-fr_values-fr.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,133,206",
+                        "endColumns": "77,72,83",
+                        "endOffsets": "128,201,285"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,26,27,28,29,30,31,32,33,34,35,36,37,38,39",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,2560,2624,2688,2743,2800,2855,2893,2933,2970,3072,3186,3294,3366,3436",
+                        "endColumns": "49,63,63,54,56,54,37,39,36,101,113,107,71,69,77",
+                        "endOffsets": "100,2619,2683,2738,2795,2850,2888,2928,2965,3067,3181,3289,3361,3431,3509"
+                    },
+                    "to": {
+                        "startLines": "2,30,31,32,33,34,38,40,41,42,43,44,45,46,47",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,3353,3417,3481,3536,3593,3871,3975,4015,4052,4154,4268,4376,4448,4518",
+                        "endColumns": "49,63,63,54,56,54,37,39,36,101,113,107,71,69,77",
+                        "endOffsets": "100,3412,3476,3531,3588,3643,3904,4010,4047,4149,4263,4371,4443,4513,4591"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\recyclerview-v7-26.0.0-alpha1.aar\\85939e122b8cbd16f070d1d10e02bdc9\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "685,744,792,848,923,999,1071",
+                        "endColumns": "58,47,55,74,75,71,65",
+                        "endOffsets": "739,787,843,918,994,1066,1132"
+                    },
+                    "to": {
+                        "startLines": "27,28,29,35,36,37,39",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "3190,3249,3297,3648,3723,3799,3909",
+                        "endColumns": "58,47,55,74,75,71,65",
+                        "endOffsets": "3244,3292,3348,3718,3794,3866,3970"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-it_values-it.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,131,205",
+                        "endColumns": "75,73,81",
+                        "endOffsets": "126,200,282"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-es_values-es.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,133,204",
+                        "endColumns": "77,70,81",
+                        "endOffsets": "128,199,281"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ar_values-ar.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-ar\\values-ar.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,124,192",
+                        "endColumns": "68,67,71",
+                        "endOffsets": "119,187,259"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-nl_values-nl.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-nl\\values-nl.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,134,202",
+                        "endColumns": "78,67,84",
+                        "endOffsets": "129,197,282"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ru_values-ru.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,135,206",
+                        "endColumns": "79,70,83",
+                        "endOffsets": "130,201,285"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ja_values-ja.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,188",
+                        "endColumns": "64,67,66",
+                        "endOffsets": "115,183,250"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-he_values-he.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-he\\values-he.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,123,190",
+                        "endColumns": "67,66,70",
+                        "endOffsets": "118,185,256"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-pt-rBR_values-pt-rBR.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,131,204",
+                        "endColumns": "75,72,80",
+                        "endOffsets": "126,199,280"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ro_values-ro.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-ro\\values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,139,211",
+                        "endColumns": "83,71,91",
+                        "endOffsets": "134,206,298"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ko_values-ko.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,121,188",
+                        "endColumns": "65,66,68",
+                        "endOffsets": "116,183,252"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de_values-de.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,136,204",
+                        "endColumns": "80,67,86",
+                        "endOffsets": "131,199,286"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-zh_values-zh.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,128,205,266,333",
+                        "endColumns": "72,76,60,66,64",
+                        "endOffsets": "123,200,261,328,393"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-iw_values-iw.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,123,190",
+                        "endColumns": "67,66,70",
+                        "endOffsets": "118,185,256"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-pt_values-pt.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,131,204",
+                        "endColumns": "75,72,83",
+                        "endOffsets": "126,199,283"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-fi_values-fi.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values-fi\\values-fi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,146,260,368,447,521",
+                        "endColumns": "90,113,107,78,73,80",
+                        "endOffsets": "141,255,363,442,516,597"
+                    }
+                }
+            ]
+        }
+    ]
+}

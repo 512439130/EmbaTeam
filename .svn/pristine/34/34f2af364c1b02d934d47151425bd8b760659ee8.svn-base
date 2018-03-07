@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EmbaTeam</string>
+
+
+
+    <!--edit_text-->
+    <string name="filter_user_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@.</string>
+    <string name="filter_pass_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="filter_repass_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+
+    <string name="title_base">加载中...</string>
+    <string name="tab_key_down_two_value">再按一次，退出程序</string>
+</resources>

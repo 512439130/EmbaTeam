@@ -1,0 +1,65 @@
+package com.fala.emba.team.constant;
+
+/**
+ * Created by SoMustYY on 2017/12/1.
+ * 请求接口管理类
+ */
+
+public class RequestConst {
+    /**
+     * 机器操作系统
+     */
+    public static final String OS = "android";
+    /**
+     * 配置文件的名称（Sharepreference）
+     */
+    public static final String SP_XML_NAME = "fala_emba";
+
+    //测试服务器
+    public static final String APP_TEST_NAME = "http://wms.fala.cn";
+    //正式服务器
+    public static final String APP_REALM_NAME = "http://emba.falacloud.com:8801";
+    //模块
+    public static final String APP_MODULE = "/emba/api/";
+    //测试接口地址
+    public static final String APP_SERVER = APP_TEST_NAME + APP_MODULE;
+    //正式接口地址
+//    public static final String APP_SERVER = APP_REALM_NAME + APP_MODULE;
+
+
+
+
+
+
+
+    //功能接口(post)
+    //登录
+    public static final String app_login = APP_SERVER + "login?";
+    //注册
+    public static final String app_register = APP_SERVER + "register?";
+    //编辑个人信息
+    public static final String app_edit_user = APP_SERVER + "editUser?";
+    //编辑(更改)手机号
+    public static final String app_change_phone = APP_SERVER + "changePhone?";
+    //修改密码
+    public static final String app_update_pass = APP_SERVER + "changePassword?";
+    //上传头像
+    public static final String app_upload_image = APP_SERVER + "uploadUserHead?";
+    //获取最新个人信息
+    public static final String app_get_user_info = APP_SERVER + "userInfo?";
+    //获取协会信息
+    public static final String app_get_association_list = APP_SERVER + "associationList?";
+    //申请入会
+    public static final String app_apply_membership = APP_SERVER + "applyMembership?";
+    //获取活动信息
+    public static final String app_get_activity_list = APP_SERVER + "activityList?";
+    //活动报名
+    public static final String app_apply_activity = APP_SERVER + "applyActivity?";
+    //历史推送列表
+    public static final String app_notice_history = APP_SERVER + "noticeHistory?";
+    //发送短信接口（暂时写在客户端）
+    public static final String app_send_sms = "http://120.77.49.16/sms/HttpSendSM?";
+    //获取短信验证码
+    public static final String app_get_message_code = APP_SERVER + "getMessageCode?";
+
+}

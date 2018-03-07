@@ -1,0 +1,76 @@
+package com.fala.luofushan.adapter;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+
+import com.fala.luofushan.R;
+import com.fala.luofushan.util.LogManager;
+import com.shizhefei.view.indicator.IndicatorViewPager.IndicatorFragmentPagerAdapter;
+
+import java.util.List;
+
+
+/**
+ * Created by SoMustYY on 2017/7/7.
+ */
+
+/**
+ * ViewPager的适配器
+ */
+public class TabMainAdapter extends IndicatorFragmentPagerAdapter {
+    private static final String TAG = "TabMainAdapter：";
+    private String[] tabNames = {"主页", "实况告警", "营运气象"};
+    private int[] tabIcons = {R.drawable.maintab_1_selector, R.drawable.maintab_2_selector, R.drawable.maintab_3_selector};
+    private LayoutInflater inflater;
+    private List<Fragment> mFragments;
+
+    private String userId;
+
+
+    public TabMainAdapter(FragmentManager fragmentManager, Context context, List<Fragment> mFragments) {
+        super(fragmentManager);
+        inflater = LayoutInflater.from(context);
+        this.mFragments = mFragments;
+    }
+
+    @Override
+    public int getCount() {
+        return mFragments.size();
+    }
+
+    @Override
+    public View getViewForTab(int position, View convertView, ViewGroup container) {
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.tab_main, container, false);
+        }
+        TextView textView = (TextView) convertView;
+        textView.setText(tabNames[position]);
+        textView.setCompoundDrawablesWithIntrinsicBounds(0, tabIcons[position], 0, 0);
+        return textView;
+    }
+
+    @Override
+    public Fragment getFragmentForPage(int position) {
+
+        switch (position) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+
+
+        return mFragments.get(position);
+    }
+}

@@ -1,0 +1,85 @@
+package com.fala.luofushan.adapter;
+
+import android.content.Context;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.fala.luofushan.R;
+import com.fala.luofushan.bean.NoticeHistoryComm;
+
+import com.fala.pulltorefresh.library.PullToRefreshListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class NoticeHistoryAdapter extends BaseAdapter {
+    private Context context;
+    private List<NoticeHistoryComm.NoticesBean> mNoticeHistoryComms = new ArrayList<NoticeHistoryComm.NoticesBean>();
+
+
+
+
+    public NoticeHistoryAdapter(Context context,List<NoticeHistoryComm.NoticesBean> noticeHistoryComms) {
+        this.context = context;
+        this.mNoticeHistoryComms = noticeHistoryComms;
+    }
+
+
+
+
+
+    @Override
+    public int getCount() {
+        return mNoticeHistoryComms.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mNoticeHistoryComms.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public void setSelect(int position, String flag) {
+
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_notice_history, null);
+            holder.list_title = convertView.findViewById(R.id.list_title);
+            holder.list_time = convertView.findViewById(R.id.list_time);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        System.out.println(position);
+        holder.list_title.setText(mNoticeHistoryComms.get(position).getTitle());
+        holder.list_time.setText(mNoticeHistoryComms.get(position).getSendTime());
+
+        return convertView;
+    }
+
+    private static final class ViewHolder {
+        private TextView list_title;
+        private TextView list_time;
+
+    }
+
+}

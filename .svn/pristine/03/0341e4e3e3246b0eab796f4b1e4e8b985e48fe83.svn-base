@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,9,10,15,16,17,18,19,20,21,22,23,24,25,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,395,444,673,728,787,848,906,968,1022,1082,1136,1186,1240,4296",
+                        "endLines": "8,9,14,15,16,17,18,19,20,21,22,23,24,25,32",
+                        "endColumns": "11,48,11,54,58,60,57,61,53,59,53,49,53,54,55",
+                        "endOffsets": "390,439,668,723,782,843,901,963,1017,1077,1131,1181,1235,1290,4347"
+                    }
+                }
+            ]
+        }
+    ]
+}

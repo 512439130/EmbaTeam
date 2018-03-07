@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="search_dark_background">#ff303030</color>
+    <color name="search_dark_hint">#80ffffff</color>
+    <color name="search_dark_icon">#b3ffffff</color>
+    <color name="search_dark_text">#ffffffff</color>
+    <color name="search_dark_text_highlight">#62ffffff</color>
+    <color name="search_light_background">#fffafafa</color>
+    <color name="search_light_hint">#80000000</color>
+    <color name="search_light_icon">#8a000000</color>
+    <color name="search_light_text">#de000000</color>
+    <color name="search_light_text_highlight">#62000000</color>
+    <color name="search_play_store_background">#ffffff</color>
+    <color name="search_play_store_hint">#bdbdbd</color>
+    <color name="search_play_store_icon">#616161</color>
+    <color name="search_play_store_text">#212121</color>
+    <color name="search_play_store_text_highlight">#9e9e9e</color>
+    <color name="search_shadow_layout">#80000000</color>
+    <declare-styleable name="SearchView"><attr format="enum" name="search_version">
+            <enum name="toolbar" value="1000"/>
+            <enum name="menu_item" value="1001"/>
+        </attr><attr format="enum" name="search_version_margins">
+            <enum name="toolbar_small" value="2000"/>
+            <enum name="toolbar_big" value="2001"/>
+            <enum name="menu_item" value="2002"/>
+        </attr><attr format="enum" name="search_theme">
+            <enum name="light" value="3000"/>
+            <enum name="dark" value="3001"/>
+            <enum name="play_store" value="3002"/>
+        </attr><attr format="dimension" name="search_height"/><attr format="integer" name="search_navigation_icon"/><attr format="color" name="search_icon_color"/><attr format="color" name="search_background_color"/><attr format="color" name="search_text_color"/><attr format="color" name="search_text_highlight_color"/><attr format="dimension" name="search_text_size"/><attr format="enum" name="search_text_style">
+            <enum name="normal" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="italic" value="2"/>
+            <enum name="bold_italic" value="3"/>
+        </attr><attr format="string" name="search_hint"/><attr format="color" name="search_hint_color"/><attr format="boolean" name="search_voice"/><attr format="string" name="search_voice_text"/><attr format="integer" name="search_animation_duration"/><attr format="boolean" name="search_shadow"/><attr format="boolean" name="search_shadow_color"/><attr format="dimension" name="search_elevation"/><attr format="boolean" name="search_clear_on_open"/><attr format="boolean" name="search_clear_on_close"/><attr format="boolean" name="search_hide_on_keyboard_close"/><attr format="boolean" name="search_show_progress"/><attr format="integer" name="search_cursor_drawable"/></declare-styleable>
+    <dimen name="search_divider">1dp</dimen>
+    <dimen name="search_filter_margin_start">12dp</dimen>
+    <dimen name="search_filter_margin_top">4dp</dimen>
+    <dimen name="search_height">46dp</dimen>
+    <dimen name="search_icon">56dp</dimen>
+    <dimen name="search_item_height">56dp</dimen>
+    <dimen name="search_key_line_16">16dp</dimen>
+    <dimen name="search_key_line_8">8dp</dimen>
+    <dimen name="search_menu_item_margin">1dp</dimen>
+    <dimen name="search_menu_item_margin_left_right">2dp</dimen>
+    <dimen name="search_progress">24dp</dimen>
+    <dimen name="search_reveal">24dp</dimen>
+    <dimen name="search_text_medium">16sp</dimen>
+    <dimen name="search_text_small">14sp</dimen>
+    <dimen name="search_toolbar_margin_big_left_right">8dp</dimen>
+    <dimen name="search_toolbar_margin_small_left_right">8dp</dimen>
+    <dimen name="search_toolbar_margin_top">5dp</dimen>
+    <integer name="search_animation_duration">300</integer>
+    <string name="search_app_name">SearchView</string>
+    <string name="search_behavior" translatable="false">com.lapism.searchview.SearchBehavior</string>
+</resources>

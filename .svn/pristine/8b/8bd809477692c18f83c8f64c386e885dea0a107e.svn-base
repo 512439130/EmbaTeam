@@ -1,0 +1,95 @@
+package com.fala.emba.team.activity.adapter;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.fala.emba.team.R;
+import com.fala.emba.team.app.GlideApp;
+import com.fala.emba.team.bean.AssociationComm;
+import com.fala.emba.team.util.ImageLoaderUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 协会列表适配器
+ */
+public class AssociationListAdapter extends BaseAdapter {
+    private Context context;
+    private List<AssociationComm.AssociationsBean> mAssociationsBeans = new ArrayList<>();
+
+    public AssociationListAdapter(Context context, List<AssociationComm.AssociationsBean> associationsBeans) {
+        this.context = context;
+        this.mAssociationsBeans = associationsBeans;
+    }
+
+    @Override
+    public int getCount() {
+        return mAssociationsBeans.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mAssociationsBeans.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @SuppressLint("InflateParams")
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_association, null);
+            holder.tv_association_name = convertView.findViewById(R.id.tv_association_name);
+            holder.tv_association_open_time = convertView.findViewById(R.id.tv_association_open_time);
+            holder.tv_association_chair_man = convertView.findViewById(R.id.tv_association_chair_man);
+            holder.tv_association_member_count = convertView.findViewById(R.id.tv_association_member_count);
+            holder.tv_association_slogan = convertView.findViewById(R.id.tv_association_slogan);
+            holder.association_image = convertView.findViewById(R.id.association_image);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.tv_association_name.setText(mAssociationsBeans.get(position).getName());
+        holder.tv_association_open_time.setText(mAssociationsBeans.get(position).getOpenTime());
+        holder.tv_association_chair_man.setText(mAssociationsBeans.get(position).getChairman());
+        holder.tv_association_member_count.setText(String.valueOf(mAssociationsBeans.get(position).getMemberCount()));
+        holder.tv_association_slogan.setText(mAssociationsBeans.get(position).getSlogan());
+        ImageLoaderUtils.displayImageDefault2(mAssociationsBeans.get(position).getLogo(),holder.association_image);
+//        GlideApp.with(context)
+//                .asBitmap()
+//                .load(mAssociationsBeans.get(position).getLogo())
+//                .placeholder(R.mipmap.icon_association_default)  //设置底图
+//                .fitCenter()
+//                .transition(BitmapTransitionOptions.withCrossFade(3000))  //淡入淡出
+//                .into(holder.association_image);
+
+        return convertView;
+    }
+
+    private static final class ViewHolder {
+        private TextView tv_association_name;
+        private TextView tv_association_open_time;
+        private TextView tv_association_chair_man;
+        private TextView tv_association_member_count;
+        private TextView tv_association_slogan;
+
+        private ImageView association_image;
+
+    }
+
+}

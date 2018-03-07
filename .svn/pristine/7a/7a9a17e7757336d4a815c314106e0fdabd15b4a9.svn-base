@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/line"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/include_layout_main_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <EditText
+            android:id="@+id/activity_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_stroke_search_corner"
+            android:gravity="left|center_vertical"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:paddingLeft="15dp"
+            android:textColor="@color/text_color"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/search_hing_view"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@mipmap/icon_search"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="搜索"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.header.MaterialHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <ListView
+                android:id="@+id/activity_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/line"
+                android:dividerHeight="3dp"
+                android:scrollbars="none"
+                android:visibility="visible">
+
+            </ListView>
+            <LinearLayout
+                android:id="@+id/ll_layout_null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:src="@mipmap/icon_list_act_ass_null" />
+
+                <TextView
+                    android:id="@+id/text_null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

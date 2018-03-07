@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\main\res"/><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\build\generated\res\rs\debug"/><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\build\generated\res\resValues\debug"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\main\res"><file path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\main\res\values\attrs.xml" qualifiers=""><attr format="dimension" name="srlDrawableSize"/><attr format="dimension" name="srlDrawableArrowSize"/><attr format="dimension" name="srlDrawableProgressSize"/><attr format="dimension" name="srlDrawableMarginRight"/><attr format="dimension" name="srlTextSizeTitle"/><attr format="dimension" name="srlTextSizeTime"/><attr format="integer" name="srlFinishDuration"/><attr format="color" name="srlPrimaryColor"/><attr format="color" name="srlAccentColor"/><attr format="reference" name="srlDrawableArrow"/><attr format="reference" name="srlDrawableProgress"/><attr format="boolean" name="srlEnableHorizontalDrag"/><attr format="enum" name="srlClassicsSpinnerStyle">
+        <enum name="Translate" value="0"/>
+        <enum name="Scale" value="1"/>
+        <enum name="FixedBehind" value="2"/>
+    </attr><attr format="enum" name="layout_srlSpinnerStyle">
+        <enum name="Translate" value="0"/>
+        <enum name="Scale" value="1"/>
+        <enum name="FixedBehind" value="2"/>
+        <enum name="FixedFront" value="3"/>
+        <enum name="MatchLayout" value="4"/>
+    </attr><declare-styleable name="SmartRefreshLayout">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr format="integer" name="srlReboundDuration"/>
+        <attr format="dimension" name="srlHeaderHeight"/>
+        <attr format="dimension" name="srlFooterHeight"/>
+        <attr format="float" name="srlDragRate"/>
+        <attr format="float" name="srlHeaderMaxDragRate"/>
+        <attr format="float" name="srlFooterMaxDragRate"/>
+        <attr format="float" name="srlHeaderTriggerRate"/>
+        <attr format="float" name="srlFooterTriggerRate"/>
+        <attr format="boolean" name="srlEnableRefresh"/>
+        <attr format="boolean" name="srlEnableLoadmore"/>
+        <attr format="boolean" name="srlEnableHeaderTranslationContent"/>
+        <attr format="boolean" name="srlEnableFooterTranslationContent"/>
+        <attr format="boolean" name="srlEnablePreviewInEditMode"/>
+        <attr format="boolean" name="srlEnableAutoLoadmore"/>
+        <attr format="boolean" name="srlEnableOverScrollBounce"/>
+        <attr format="boolean" name="srlEnablePureScrollMode"/>
+        <attr format="boolean" name="srlEnableNestedScrolling"/>
+        <attr format="boolean" name="srlEnableScrollContentWhenLoaded"/>
+        <attr format="boolean" name="srlEnableLoadmoreWhenContentNotFull"/>
+        <attr format="boolean" name="srlEnableFooterFollowWhenLoadFinished"/>
+        <attr format="boolean" name="srlEnableOverScrollDrag"/>
+        <attr format="boolean" name="srlDisableContentWhenRefresh"/>
+        <attr format="boolean" name="srlDisableContentWhenLoading"/>
+        <attr format="reference" name="srlFixedHeaderViewId"/>
+        <attr format="reference" name="srlFixedFooterViewId"/>
+    </declare-styleable><declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr format="color" name="layout_srlBackgroundColor"/>
+    </declare-styleable><declare-styleable name="BezierRadarHeader">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlEnableHorizontalDrag"/>
+    </declare-styleable><declare-styleable name="BallPulseFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+    </declare-styleable><declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr format="dimension" name="srlTextTimeMarginTop"/>
+        <attr format="boolean" name="srlEnableLastTime"/>
+    </declare-styleable><declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+    </declare-styleable></file><file path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">SmartRefreshLayout</string></file></source><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\build\generated\res\rs\debug"/><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="E:\workspace\android_workspace\EmbaTeam\LibSmartRefreshLayout\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="SmartRefreshLayout"><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr format="integer" name="srlReboundDuration"/><attr format="dimension" name="srlHeaderHeight"/><attr format="dimension" name="srlFooterHeight"/><attr format="float" name="srlDragRate"/><attr format="float" name="srlHeaderMaxDragRate"/><attr format="float" name="srlFooterMaxDragRate"/><attr format="float" name="srlHeaderTriggerRate"/><attr format="float" name="srlFooterTriggerRate"/><attr format="boolean" name="srlEnableRefresh"/><attr format="boolean" name="srlEnableLoadmore"/><attr format="boolean" name="srlEnableHeaderTranslationContent"/><attr format="boolean" name="srlEnableFooterTranslationContent"/><attr format="boolean" name="srlEnablePreviewInEditMode"/><attr format="boolean" name="srlEnableAutoLoadmore"/><attr format="boolean" name="srlEnableOverScrollBounce"/><attr format="boolean" name="srlEnablePureScrollMode"/><attr format="boolean" name="srlEnableNestedScrolling"/><attr format="boolean" name="srlEnableScrollContentWhenLoaded"/><attr format="boolean" name="srlEnableLoadmoreWhenContentNotFull"/><attr format="boolean" name="srlEnableFooterFollowWhenLoadFinished"/><attr format="boolean" name="srlEnableOverScrollDrag"/><attr format="boolean" name="srlDisableContentWhenRefresh"/><attr format="boolean" name="srlDisableContentWhenLoading"/><attr format="reference" name="srlFixedHeaderViewId"/><attr format="reference" name="srlFixedFooterViewId"/></declare-styleable><declare-styleable name="ClassicsHeader"><attr name="srlClassicsSpinnerStyle"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlFinishDuration"/><attr name="srlDrawableArrow"/><attr name="srlDrawableProgress"/><attr name="srlDrawableMarginRight"/><attr name="srlDrawableSize"/><attr name="srlDrawableArrowSize"/><attr name="srlDrawableProgressSize"/><attr name="srlTextSizeTitle"/><attr name="srlTextSizeTime"/><attr format="dimension" name="srlTextTimeMarginTop"/><attr format="boolean" name="srlEnableLastTime"/></declare-styleable><declare-styleable name="SmartRefreshLayout_Layout"><attr name="layout_srlSpinnerStyle"/><attr format="color" name="layout_srlBackgroundColor"/></declare-styleable><declare-styleable name="BezierRadarHeader"><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlEnableHorizontalDrag"/></declare-styleable><declare-styleable name="ClassicsFooter"><attr name="srlClassicsSpinnerStyle"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlFinishDuration"/><attr name="srlTextSizeTitle"/><attr name="srlDrawableArrow"/><attr name="srlDrawableProgress"/><attr name="srlDrawableMarginRight"/><attr name="srlDrawableSize"/><attr name="srlDrawableArrowSize"/><attr name="srlDrawableProgressSize"/></declare-styleable><declare-styleable name="BallPulseFooter"><attr name="srlClassicsSpinnerStyle"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/></declare-styleable></configuration></mergedItems></merger>

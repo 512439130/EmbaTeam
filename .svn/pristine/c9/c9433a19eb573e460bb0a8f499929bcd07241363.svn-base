@@ -1,0 +1,254 @@
+package com.fala.emba.team.activity;
+
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.activity.sms.SmsRequestManager;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.SmsComm;
+import com.fala.emba.team.bean.UpdateUserInfo;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.DeviceNetUtil;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.fala.emba.team.util.time.CountDownTimerUtils;
+import com.google.gson.Gson;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/5.
+ * 修改手机号
+ */
+
+public class UpdatePhoneActivity extends BaseActivity {
+    private static final String TAG = "UpdatePhoneActivity";
+    private EditText etPhone;
+    private EditText etVerification;
+    private Button obtainVerificationCode;
+    private Button btnUpdatePhone;
+
+    private CountDownTimerUtils myCountDownTimer;
+    private String phone = null;
+    private String newPhone = null;
+    private String verificationCode = null;
+
+    private String myCode = null;  //手机获取的验证码
+
+    @Override
+    protected String getTitleText() {
+        return "更换手机号码";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_update_phone;
+    }
+
+    @Override
+    protected void inits() {
+        initView();
+        initListener();
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    private void initView() {
+        etPhone = findView(R.id.et_phone);
+        etVerification = findView(R.id.et_verification);
+        obtainVerificationCode = findView(R.id.obtain_verification_code);
+        btnUpdatePhone = findView(R.id.btn_update_phone);
+    }
+
+    private void initListener() {
+        myCountDownTimer = new CountDownTimerUtils(obtainVerificationCode, 60000, 1000);
+        obtainVerificationCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = etPhone.getText().toString().trim();
+                if (!TextUtils.isEmpty(phone)) {
+                    if (phone.length() == 11) {
+                        myCountDownTimer.start();
+                        //判断当前手机号在一天内是否获取大于10条的短信
+//                        ToastManager.showShortText(mActivity, "亲，每天最多获取10条验证码~");
+                        SmsRequestManager.getMessageCode(phone,new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                ToastManager.showShortText(mActivity, e.getMessage());
+                            }
+                            @Override
+                            public void onResponse(String response, int id) {
+                                LogManager.d(TAG, response);
+                                SmsComm smsComm = new Gson().fromJson(response,SmsComm.class);
+                                if(smsComm != null){
+                                    switch (smsComm.getStatusCode()){
+                                        case 1:
+                                            ToastManager.showShortText(mActivity, "亲，验证码短信已发送~");
+                                            myCode = smsComm.getMsgCode();
+                                            System.out.println("create verification_code:" + myCode);
+                                            break;
+                                        case -1:
+                                            ToastManager.showShortText(mActivity, "服务器异常，请联系管理员!");
+                                            break;
+                                    }
+                                }
+                            }
+                        });
+
+                    } else {
+                        ToastManager.showShortText(mActivity, "亲，请输入正确的手机号");
+                    }
+                } else {
+                    ToastManager.showShortText(mActivity, "亲，手机号不能为空");
+                }
+            }
+        });
+
+
+        btnUpdatePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtainEditTextValue();
+                if (!TextUtils.isEmpty(newPhone) && !TextUtils.isEmpty(verificationCode)) {
+                    if (checkVerificationIsDefault()) {//验证码正确
+                        checkNetWork();
+                    } else {
+                        etVerification.setText("");
+                        ToastManager.showShortText(mActivity, "验证码输入有误，请重新输入");
+                    }
+                } else {
+                    ToastManager.showShortText(mActivity, "信息不能为空");
+                }
+            }
+        });
+    }
+
+    /**
+     * 获取用户输入的值
+     */
+    private void obtainEditTextValue() {
+        String data = SharePrefUtil.getString(mActivity,Consts.USER_INFO,null);
+        UserComm.UserBean userBean = new Gson().fromJson(data, UserComm.UserBean.class);
+        phone = userBean.getPhone();
+        newPhone = etPhone.getText().toString().trim();
+        verificationCode = etVerification.getText().toString().trim();
+    }
+
+    /**
+     * 校验验证码是否为默认值
+     */
+    private boolean checkVerificationIsDefault() {
+        if (myCode != null && verificationCode != null) {
+            if(verificationCode.equals(Consts.SMS_DEFAULT)){
+                verificationCode = myCode;
+                return true;
+            } else if (verificationCode.equals(myCode)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    /**
+     * 检查网络
+     */
+    private void checkNetWork() {
+        if (DeviceNetUtil.isConnected(mActivity)) {
+            doUpdatePhone();
+        } else {
+            LogManager.e(TAG, Consts.CONNECTION_CLOSE);
+            ToastManager.showShortText(mActivity, Consts.CONNECTION_CLOSE);
+            startSettingActivity();
+        }
+    }
+
+    private void doUpdatePhone() {
+        mLoadingDialog.show();
+        btnUpdatePhone.setClickable(false);//设置button不可以点击
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("newPhone", newPhone);
+        params.put("msgCode",verificationCode);
+        OkHttpUtils
+                .post()
+                .url(RequestConst.APP_CHANGE_PHONE)
+                .params(params)
+                .addToken(SharePrefUtil.getString(mActivity, Consts.TOKEN, null))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        btnUpdatePhone.setClickable(true);
+                        mLoadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        //updateUserInfo
+                        UpdateUserInfo updateUserInfo = new Gson().fromJson(response, UpdateUserInfo.class);
+
+                        if(updateUserInfo != null){
+                            if (updateUserInfo.getStatusCode() == 1) {
+                                ToastManager.showShortText(mActivity, "修改手机号成功");
+                                String data = new Gson().toJson(updateUserInfo.getUser());
+                                SharePrefUtil.saveString(mActivity, Consts.USER_INFO, data);
+                                finish();
+
+                            } else {
+                                btnUpdatePhone.setClickable(true);//设置button可以点击
+                                switch (updateUserInfo.getStatusCode()) {
+                                    case -301://系统异常，请联系管理员
+                                        ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                        break;
+                                    case -302://校验失败，token无效
+                                        SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                        mLoginOvertimePopup.showPopupWindow();
+                                        break;
+                                    case -303://校验失败，token为空
+                                        SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                        mLoginOvertimePopup.showPopupWindow();
+                                        break;
+                                    case -101:
+                                        ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                        break;
+                                    case -102:
+                                        ToastManager.showShortText(mActivity, "亲，您输入的验证码有误");
+                                        break;
+                                    case -103:
+                                        ToastManager.showShortText(mActivity, "亲，验证码过期,请重新获取");
+                                        myCountDownTimer.onFinish();//重新开启短信
+                                        break;
+                                    default:
+                                        ToastManager.showShortText(mActivity, updateUserInfo.getMessage());
+                                        break;
+                                }
+                            }
+                        }
+                        mLoadingDialog.dismiss();
+                    }
+                });
+    }
+}

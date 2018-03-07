@@ -1,0 +1,208 @@
+package com.fala.emba.team.activity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.activity.adapter.TabMainAdapter;
+import com.fala.emba.team.activity.fragment.ActivityFragment;
+import com.fala.emba.team.activity.fragment.MineFragment;
+import com.fala.emba.team.activity.fragment.AssociationFragment;
+import com.fala.emba.team.animation.viewpager.DepthPageTransformer;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.util.DisplayUtils;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.fala.emba.team.view.popup.GuideDialogPopup;
+import com.google.gson.Gson;
+import com.shizhefei.view.indicator.FixedIndicatorView;
+import com.shizhefei.view.indicator.IndicatorViewPager;
+import com.shizhefei.view.indicator.slidebar.ColorBar;
+import com.shizhefei.view.indicator.transition.OnTransitionTextListener;
+import com.shizhefei.view.viewpager.SViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by SoMustYY on 2017/12/3.
+ * 主页
+ */
+public class TabMainActivity extends BaseActivity {
+    private static final String TAG = "TabMainActivity";
+
+    private SViewPager mViewPager;
+    private FixedIndicatorView mIndicator;
+    private AssociationFragment associationFragment;
+    private ActivityFragment activityFragment;
+    private MineFragment mineFragment;
+    private IndicatorViewPager indicatorViewPager;
+    private GuideDialogPopup guideDialogPopup;
+    private long exitTime = 0;
+    private UserComm.UserBean userBean;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected String getTitleText() {
+        return "";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_tab_main;
+    }
+
+    @Override
+    protected boolean isShowBacking() {
+        return false;
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    @Override
+    protected int setTitleBarColorHex() {
+        return Color.parseColor("#48D1EC");
+    }
+
+
+    @SuppressLint("HandlerLeak")
+    private Handler popupHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    initDialog();
+                    break;
+            }
+        }
+
+    };
+
+    @Override
+    protected void inits() {
+        initView();
+        initIndicator();
+        popupHandler.sendEmptyMessageDelayed(0, 1000);
+
+    }
+
+
+    private void initDialog() {
+        guideDialogPopup = new GuideDialogPopup(mActivity, new GuideDialogPopup.DialogCallBack() {
+            @Override
+            public void submit() {
+                guideDialogPopup.dismiss();
+                startActivity(new Intent(mActivity, MineSettingActivity.class));
+            }
+
+            @Override
+            public void cancel() {
+                guideDialogPopup.dismiss();
+            }
+        });
+
+        getShare();
+
+    }
+
+    private void getShare() {
+        userBean = new Gson().fromJson(SharePrefUtil.getString(mActivity, Consts.USER_INFO, null), UserComm.UserBean.class);
+        if (userBean.getName().equals("") || userBean.getSex().equals("") || userBean.getIdentity().equals("") || userBean.getHeight().equals("") || userBean.getBirthday().equals("") || userBean.getClothesSize().equals("") || userBean.getCompany().equals("") || userBean.getJob().equals("") || userBean.getPhone().equals("")  || userBean.getRegisterDate().equals("")) {
+            guideDialogPopup.showPopupWindow();
+        }
+    }
+
+
+    private void initView() {
+        mViewPager = findView(R.id.tab_main_viewpager);
+        mIndicator = findView(R.id.tab_main_indicator);
+    }
+
+    private void initIndicator() {
+        //indicator颜色设定
+
+        mIndicator.setOnTransitionListener(new OnTransitionTextListener(10, 10,Color.parseColor("#17BCFE"), Color.parseColor("#A7A7A7")));
+        List<Fragment> mFragments = new ArrayList<>();
+
+        associationFragment = new AssociationFragment();
+        activityFragment = new ActivityFragment();
+        mineFragment = new MineFragment();
+
+        //fragment中外嵌下拉刷新
+
+        mFragments.add(associationFragment);
+        mFragments.add(activityFragment);
+        mFragments.add(mineFragment);
+
+        indicatorViewPager = new IndicatorViewPager(mIndicator, mViewPager);
+
+        indicatorViewPager.setAdapter(new TabMainAdapter(getSupportFragmentManager(), getApplicationContext(), mFragments));
+
+        indicatorViewPager.setPageOffscreenLimit(3);
+        mViewPager.setPageTransformer(true, new DepthPageTransformer());//切换动画
+
+        // 关闭viewpager的滑动事件
+        mViewPager.setCanScroll(false);
+        // 设置viewpager保留界面不重新加载的页面数量
+        mViewPager.setOffscreenPageLimit(3);
+
+        indicatorViewPager.setCurrentItem(1, true);  //默认活动页
+
+    }
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            ToastManager.showShortText(getApplicationContext(), "再按一次返回桌面");
+            exitTime = System.currentTimeMillis();
+        } else {
+            moveTaskToBack(true);
+            //关闭APP
+//            finish();
+//            System.exit(0);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        popupHandler.removeMessages(0);
+    }
+
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+
+}

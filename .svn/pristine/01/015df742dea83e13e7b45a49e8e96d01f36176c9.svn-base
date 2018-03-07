@@ -1,0 +1,4 @@
+int anim basepopup_fade_in 0x7f010001
+int anim basepopup_fade_out 0x7f010002
+int string app_name 0x7f150001
+int style PopupAnimaFade 0x7f160001

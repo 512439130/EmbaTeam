@@ -1,0 +1,279 @@
+package com.fala.emba.team.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.base.webview.BaseWebView;
+import com.fala.emba.team.bean.RequestComm;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.google.gson.Gson;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+
+/**
+ * Created by Administrator on 2017/12/7.
+ * 详情页（活动/协会）
+ */
+
+public class DetailsWebActivity extends BaseActivity {
+    private static final String TAG = "DetailsWebActivity";
+    private Button btnApplyAssociation;
+    private BaseWebView associationIntroduceWebview;
+    private String webUrl;
+    private String titleName;
+    private String associationId;
+    private String activityId;
+    private String phone;
+
+    private UserComm.UserBean userBean;
+
+
+    @Override
+    protected String getTitleText() {
+        return "加载中...";
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_web_details;
+    }
+
+    @Override
+    protected void inits() {
+        getIntentData();
+        initView();
+        initListener();
+        loadData();
+    }
+
+    private void getIntentData() {
+        webUrl = getIntent().getStringExtra(Consts.WEB_URL);
+        associationId = getIntent().getStringExtra(Consts.WEB_ASSOCIATION_ID);
+        activityId = getIntent().getStringExtra(Consts.WEB_ACTIVITY_ID);
+        phone = getIntent().getStringExtra(Consts.WEB_PHONE);
+        titleName = getIntent().getStringExtra(Consts.WEB_TITLE_NAME);
+
+        String data = SharePrefUtil.getString(mActivity, Consts.USER_INFO, null);
+
+        userBean = new Gson().fromJson(data, UserComm.UserBean.class);
+
+
+
+
+
+//
+    }
+
+    private void initView() {
+        btnApplyAssociation = findView(R.id.btn_apply_association);
+        associationIntroduceWebview = findView(R.id.association_introduce_webview);
+        associationIntroduceWebview.loadUrl(webUrl);
+
+
+        if (!associationId.equals("")) {
+            tvTitle.setText(titleName);
+            btnApplyAssociation.setText("申请入会");
+            for (int i = 0; i < userBean.getAssociations().size(); i++) {
+                System.out.println("TEST--userBean.getAssociations().get(i).getId()：" + userBean.getAssociations().get(i).getId());
+                if (userBean.getAssociations().get(i).getId() == Integer.parseInt(associationId)) {
+                    btnApplyAssociation.setVisibility(View.GONE);
+                    ToastManager.showLongText(mActivity, "亲，你已经加入该协会！");
+                }
+            }
+        } else if (!activityId.equals("")) {
+            tvTitle.setText(titleName);
+            btnApplyAssociation.setText("立即报名");
+        }
+
+
+
+
+
+    }
+
+    private void initListener() {
+        btnApplyAssociation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!associationId.equals("")) {
+                    LogManager.d(TAG, "协会申请");
+                    mLoadingDialog.show();
+
+
+                    doAssociation();
+                } else if (!activityId.equals("")) {
+                    LogManager.d(TAG, "活动报名");
+                    mLoadingDialog.show();
+                    doActivity();
+                }else{
+                    LogManager.d(TAG, "详情页传值为空");
+                }
+            }
+        });
+    }
+
+    /**
+     * 协会申请入会
+     */
+    private void doAssociation() {
+        btnApplyAssociation.setClickable(false);
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("association", associationId);
+        OkHttpUtils
+                .post()
+                .url(RequestConst.APP_APPLY_MEMBERSHIP)
+                .params(params)
+                .addToken(SharePrefUtil.getString(mActivity, Consts.TOKEN, null))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        mLoadingDialog.dismiss();
+                        btnApplyAssociation.setClickable(false);
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        mLoadingDialog.dismiss();
+                        btnApplyAssociation.setClickable(false);
+
+                        RequestComm requestComm = new Gson().fromJson(response, RequestComm.class);
+
+                        if (requestComm.getStatusCode() == 1) {
+                            ToastManager.showShortText(mActivity, requestComm.getMessage());
+                        } else {
+                            switch (requestComm.getStatusCode()) {
+                                case -301://系统异常，请联系管理员
+                                    ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                    break;
+                                case -302://校验失败，token无效
+                                    SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                    mLoginOvertimePopup.showPopupWindow();
+                                    break;
+                                case -303://校验失败，token为空
+                                    SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                    mLoginOvertimePopup.showPopupWindow();
+                                    break;
+                                default:
+                                    ToastManager.showShortText(mActivity, requestComm.getMessage());
+                                    break;
+                            }
+                        }
+                    }
+                });
+    }
+
+
+    /**
+     * 活动报名请求
+     */
+    private void doActivity() {
+        btnApplyAssociation.setClickable(false);
+        Map<String, String> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("activity", activityId);
+        OkHttpUtils
+                .post()
+                .url(RequestConst.APP_APPLY_ACTIVITY)
+                .params(params)
+                .addToken(SharePrefUtil.getString(DetailsWebActivity.this, Consts.TOKEN, null))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        LogManager.e(TAG, e.getMessage());
+                        mLoadingDialog.dismiss();
+                        btnApplyAssociation.setClickable(true);
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogManager.d(TAG, response);
+                        mLoadingDialog.dismiss();
+                        btnApplyAssociation.setClickable(true);
+                        RequestComm requestComm = new Gson().fromJson(response, RequestComm.class);
+                        if (requestComm.getStatusCode() == 1) {
+                            ToastManager.showShortText(DetailsWebActivity.this, requestComm.getMessage());
+                        } else {
+                            switch (requestComm.getStatusCode()) {
+                                case -301://系统异常，请联系管理员
+                                    ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                    break;
+                                case -302://校验失败，token无效
+                                    SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                    mLoginOvertimePopup.showPopupWindow();
+                                    break;
+                                case -303://校验失败，token为空
+                                    SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                    mLoginOvertimePopup.showPopupWindow();
+                                    break;
+                                default:
+                                    ToastManager.showShortText(mActivity, requestComm.getMessage());
+                                    break;
+                            }                        }
+                    }
+                });
+    }
+
+    /**
+     * 方法描述：加载数据
+     */
+    private void loadData() {
+        associationIntroduceWebview.loadUrl(webUrl);
+        LogManager.d(TAG, webUrl);
+    }
+
+    /**
+     * 方法描述：跳转至本Activity
+     *
+     * @param activity      发起跳转的Activity
+     * @param webUrl        WebView的url
+     * @param associationId 协会Id
+     */
+    public static void openWebViewActivity(Activity activity, String webUrl, String associationId, String activityId, String phone, String titleName) {
+        Intent intent = new Intent(activity, DetailsWebActivity.class);
+        intent.putExtra(Consts.WEB_URL, webUrl);
+
+        if (associationId != null) {
+            intent.putExtra(Consts.WEB_ASSOCIATION_ID, associationId);
+        }
+        if (activityId != null) {
+            intent.putExtra(Consts.WEB_ACTIVITY_ID, activityId);
+        }
+        if (phone != null) {
+            intent.putExtra(Consts.WEB_PHONE, phone);
+        }
+        intent.putExtra(Consts.WEB_TITLE_NAME, titleName);
+
+        activity.startActivity(intent);
+    }
+
+
+}

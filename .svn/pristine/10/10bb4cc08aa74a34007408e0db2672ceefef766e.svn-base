@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPopupWindow\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_basepopup_fade_in.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPopupWindow\\build\\intermediates\\bundles\\debug\\res\\anim\\basepopup_fade_in.xml"
+    },
+    {
+        "merged": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPopupWindow\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_basepopup_fade_out.xml.flat",
+        "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibPopupWindow\\build\\intermediates\\bundles\\debug\\res\\anim\\basepopup_fade_out.xml"
+    }
+]

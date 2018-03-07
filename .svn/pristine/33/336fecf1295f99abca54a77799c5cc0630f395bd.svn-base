@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#e2e2e2</color>
+    <color name="red">#EA3535</color>
+
+
+
+    <!--base-->
+    <color name="title_text_base">#FF51D0F4</color>
+
+    <color name="text_base">#6F6F6F</color>
+
+    <color name="line">#EEF3FA</color>
+    <color name="line2">#F2F3F5</color>
+
+
+    <!--button_orange-->
+    <color name="btn_bg_orange_normal">#ff8a00</color>
+    <color name="btn_bg_orange_pressed">#ba7728</color>
+    <color name="btn_bg_orange_un_clicked">#484747</color>
+
+    <!--button_blue-->
+    <color name="btn_bg_blue_normal">#00b4ff</color>
+    <color name="btn_bg_blue_pressed">#3583a4</color>
+    <color name="btn_bg_blue_un_clicked">#484747</color>
+    <!--button_gray-->
+    <color name="btn_bg_gray_normal">#ffffff</color>
+    <color name="btn_bg_gray_pressed">#ded4d4</color>
+    <color name="btn_bg_gray_un_clicked">#484747</color>
+    <!--button_white-->
+    <color name="btn_bg_white_normal">#22FFFFFF</color>
+    <color name="btn_bg_white_pressed">#61b6f9</color>
+    <color name="btn_bg_white_un_clicked">#55FFFFFF</color>
+
+    <!--button_white-->
+    <color name="text_bg_white_normal">#ffffff</color>
+    <color name="text_bg_white_pressed">#ded4d4</color>
+    <color name="text_bg_white_un_clicked">#484747</color>
+
+
+    <!--login_editText-->
+    <color name="start_line_color">#E7E7E7</color>
+    <color name="start_button_color">#44000000</color>
+    <color name="text_hint_color">#A7A7A7</color>
+    <color name="text_color">#88000000</color>
+
+    <!--popup-->
+    <color name="popup_bg">#8f000000</color>
+    <color name="line_bg">#CDCDCD</color>
+    <color name="comment_popup_bg">#292929</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
+
+    <color name="click_bg">#c7c7c7</color>
+    <color name="menu_bg">#2b2b2b</color>
+    <color name="menu_click_bg">#515151</color>
+
+
+    <!--login-->
+
+    <color name="text_default">#191919</color>
+    <color name="button_text_default">#038FFD</color>
+
+
+    <!--tab-->
+    <color name="tab_text">#4F4F4F</color>
+
+
+    <!--custom_date_picker-->
+    <color name="paint_text1">#168CE3</color>
+    <color name="paint_text2">#333333</color>
+    <color name="split_line">#11112233</color>
+    
+    
+    
+    <!--item_color-->
+    <color name="item_title_color">#000000</color>
+    <color name="item_text_color">#A7A7A7</color>
+
+</resources>

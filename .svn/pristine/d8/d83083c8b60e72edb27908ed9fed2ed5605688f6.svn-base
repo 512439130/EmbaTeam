@@ -1,0 +1,39 @@
+package com.fala.emba.team.activity;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+
+
+/**
+ * Created by Administrator on 2017/12/10.
+ * 消息通知
+ */
+
+public class PushHistoryActivity extends BaseActivity {
+
+
+    @Override
+    protected String getTitleText() {
+        return "历史通知";
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return true;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_push_history;
+    }
+
+    @Override
+    protected boolean isShowTvRight() {
+        return false;
+    }
+
+    @Override
+    protected void inits() {
+
+    }
+}

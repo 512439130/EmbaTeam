@@ -1,0 +1,86 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "55",
+                        "endOffsets": "67"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "4296",
+                        "endColumns": "55",
+                        "endOffsets": "4347"
+                    }
+                },
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\src\\main\\res\\values\\attrs.xml",
+                    "from": {
+                        "startLines": "21,10,15,11,3,5,12,4,2,13,8,9,7,6",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1102,603,872,663,120,267,729,192,55,798,474,542,409,343",
+                        "endLines": "27,10,19,11,3,5,12,4,2,13,8,9,7,6",
+                        "endColumns": "11,48,11,54,58,60,57,61,53,59,53,49,53,54",
+                        "endOffsets": "1437,647,1096,713,174,323,782,249,104,853,523,587,458,393"
+                    },
+                    "to": {
+                        "startLines": "2,9,10,15,16,17,18,19,20,21,22,23,24,25",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,395,444,673,728,787,848,906,968,1022,1082,1136,1186,1240",
+                        "endLines": "8,9,14,15,16,17,18,19,20,21,22,23,24,25",
+                        "endColumns": "11,48,11,54,58,60,57,61,53,59,53,49,53,54",
+                        "endOffsets": "390,439,668,723,782,843,901,963,1017,1077,1131,1181,1235,1290"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "55",
+                        "endOffsets": "67"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "4296",
+                        "endColumns": "55",
+                        "endOffsets": "4347"
+                    }
+                },
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSmartRefreshLayout\\src\\main\\res\\values\\attrs.xml",
+                    "from": {
+                        "startLines": "21,10,15,11,3,5,12,4,2,13,8,9,7,6",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1102,603,872,663,120,267,729,192,55,798,474,542,409,343",
+                        "endLines": "27,10,19,11,3,5,12,4,2,13,8,9,7,6",
+                        "endColumns": "11,48,11,54,58,60,57,61,53,59,53,49,53,54",
+                        "endOffsets": "1437,647,1096,713,174,323,782,249,104,853,523,587,458,393"
+                    },
+                    "to": {
+                        "startLines": "2,9,10,15,16,17,18,19,20,21,22,23,24,25",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,395,444,673,728,787,848,906,968,1022,1082,1136,1186,1240",
+                        "endLines": "8,9,14,15,16,17,18,19,20,21,22,23,24,25",
+                        "endColumns": "11,48,11,54,58,60,57,61,53,59,53,49,53,54",
+                        "endOffsets": "390,439,668,723,782,843,901,963,1017,1077,1131,1181,1235,1290"
+                    }
+                }
+            ]
+        }
+    ]
+}

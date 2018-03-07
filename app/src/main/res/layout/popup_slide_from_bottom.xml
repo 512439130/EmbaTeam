@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/click_to_dismiss"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/popup_bg"
+        >
+
+        <LinearLayout
+            android:id="@+id/popup_anima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            >
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="拍照"
+                android:textSize="16sp"
+                android:background="@drawable/selector_text_bg_theme_white_with_corner"
+                />
+            <View
+                style="@style/line_style"/>
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="从相册中选择"
+                android:background="@drawable/selector_text_bg_theme_white_with_corner"
+                android:textSize="16sp"/>
+            <View
+                style="@style/line_style"/>
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="取消"
+                android:background="@drawable/selector_text_bg_theme_white_with_corner"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:minHeight="60dp"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:id="@+id/fl_back"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/icon_title_back" />
+
+
+    </FrameLayout>
+
+
+    <com.fala.emba.team.view.textview.SpacingTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="2dp"
+        android:lines="1"
+        android:text="@string/title_base"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="22dp"
+        android:drawableRight="@mipmap/icon_title_share"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone" />
+</RelativeLayout>

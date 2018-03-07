@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/icon_app_login"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/include_layout_null_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/icon_logo" />
+
+
+        <EditText
+            android:id="@+id/et_login_phone"
+            android:layout_width="280dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_stroke_edge_corner"
+            android:drawableLeft="@mipmap/icon_login_phone"
+            android:paddingLeft="20dp"
+            android:drawablePadding="10dp"
+            android:hint="请输入手机号"
+            android:textSize="14sp"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColorHint="@color/text_hint_color"
+            android:textColor="@color/text_color"
+            android:textCursorDrawable="@drawable/color_cursor"/>
+
+        <EditText
+            android:id="@+id/et_login_pass"
+            android:layout_width="280dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_stroke_edge_corner"
+            android:drawableLeft="@mipmap/icon_login_pass"
+            android:paddingLeft="20dp"
+            android:drawablePadding="10dp"
+            android:hint="请输入密码"
+            android:textSize="14sp"
+            android:maxLength="16"
+            android:textColorHint="@color/text_hint_color"
+            android:textColor="@color/text_color"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@drawable/color_cursor"/>
+
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:text="登录"
+            android:background="@drawable/selector_bg_theme_blue_with_corner"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:id="@+id/user_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户注册"
+                android:textColor="#705E54"
+                android:textSize="14sp"
+                />
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#705E54"/>
+            <TextView
+                android:id="@+id/forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:textColor="#705E54"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

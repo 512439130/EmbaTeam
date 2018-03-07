@@ -1,0 +1,193 @@
+package com.fala.emba.team.base.usage;
+
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.util.AnimationUtil;
+import com.shizhefei.fragment.BaseFragment;
+import com.shizhefei.fragment.LazyFragment;
+
+
+/**
+ * Fragment基类
+ * Created by SoMustYY on 2017/7/22.
+ */
+public abstract class BaseNoLazyFragment extends BaseFragment {
+    private RelativeLayout llTitleBar;
+    private FrameLayout flBack;
+    protected TextView tvTitle;
+    protected TextView tvTitleRight;
+
+    public Dialog mLoadingDialog;
+    protected BaseActivity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (BaseActivity) getActivity();
+    }
+
+    @Override
+    protected void onCreateView(Bundle savedInstanceState) {
+        super.onCreateView(savedInstanceState);
+        setContentView(getLayoutId());  //填充布局
+
+        inits();
+        flBack = findView(R.id.fl_back);
+        tvTitle = findView(R.id.tv_title);
+        tvTitleRight = findView(R.id.tv_title_right);
+        llTitleBar = findView(R.id.id_title_bar);
+
+        if (llTitleBar != null) {
+            llTitleBar.setBackgroundColor(setTitleBarColorHex());
+        }
+        if (isShowBacking() && flBack != null) {
+            showBack();
+        }
+
+        if (isShowTitleText() && tvTitle != null && getTitleText() != null) {
+            //getTitle()的值是activity的android:lable属性值
+            tvTitle.setVisibility(View.VISIBLE);
+            tvTitle.setText(getTitleText());
+        } else if (tvTitle != null && getTitleText() == null) {
+            tvTitle.setVisibility(View.INVISIBLE);
+        }
+
+        if (isShowTvRight() && tvTitleRight != null) {
+            //getTitle()的值是activity的android:lable属性值
+            tvTitleRight.setVisibility(View.VISIBLE);
+        }
+
+
+
+        mLoadingDialog = createLoadingDialog(getActivity());
+
+    }
+
+    /**
+     * 版本号小于21的后退按钮图片
+     */
+    private void showBack() {
+        flBack.setVisibility(View.VISIBLE);
+        flBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
+    }
+
+    /**
+     * 省去强转findviewById
+     *
+     * @param id
+     * @param <T>
+     * @return
+     */
+    protected <T extends View> T findView(int id) {
+        return (T) findViewById(id);
+    }
+    /**
+     * 是否显示后退按钮,默认显示,可在子类重写该方法.
+     *
+     * @return
+     */
+    protected boolean isShowBacking() {
+        return true;
+    }
+
+    /**
+     * 是否中间文字
+     *
+     * @return
+     */
+    protected boolean isShowTitleText() {
+        return true;
+    }
+
+
+    /**
+     * 是否右边text
+     *
+     * @return
+     */
+    protected boolean isShowTvRight() {
+        return true;
+    }
+
+    private int defaultColor = Color.parseColor("#00b4ff");  //默认颜色
+
+    /**
+     * 设置状态栏的背景颜色
+     *
+     * @return
+     */
+    protected int setTitleBarColorHex() {
+        return defaultColor;
+    }
+
+
+    /**
+     * 设置标题
+     *
+     * @return
+     */
+    protected abstract String getTitleText();
+
+
+
+    /**
+     * this activity layout res
+     * 设置layout布局,在子类重写该方法.
+     *
+     * @return res layout xml id
+     */
+    protected abstract int getLayoutId();
+
+    /**
+     * 初始化
+     */
+    protected abstract void inits();
+
+    /**
+     * 自定义进度加载
+     *
+     * @param context
+     * @return
+     */
+    public static Dialog createLoadingDialog(Context context) {
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.layout_loading_dialog, null); // 得到加载view
+        LinearLayout layout = v.findViewById(R.id.dialog_view); // 加载布局
+        Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
+        loadingDialog.setCancelable(false); // 不可以用"返回键"取消
+        loadingDialog.setContentView(layout, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        return loadingDialog;
+    }
+
+
+    /**
+     * 开启Img图标点击动画
+     * @param mImageView ImagevView
+     */
+    protected static void startImageViewAnimation(ImageView mImageView){
+        mImageView.startAnimation(AnimationUtil.ImageViewAnimationBigOrSmall());
+    }
+}

@@ -1,0 +1,229 @@
+package com.fala.profession.professionnet.base.usage;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.fala.profession.professionnet.R;
+import com.fala.profession.professionnet.base.activity.BaseActivity;
+import com.fala.profession.professionnet.base.webview.BaseWebView;
+import com.fala.profession.professionnet.utils.LogManager;
+import com.fala.profession.professionnet.utils.animation.AnimationUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+/**
+ * Activity嵌套WebView懒加载基类
+ * Created by SoMustYY on 2017/7/22.
+ */
+public class BaseWebViewActivity extends BaseActivity {
+    private static final String TAG = "BaseWebViewActivity:";
+    private TextView webviewTitle;
+    private BaseWebView mWebView;
+    private String title;
+    private String webViewUrl;
+    private ImageView mImageViewReturn;
+    private String userId;
+    private String lat;
+    private String lng;
+    private String area;
+    private String token;
+    private String account;  //用户名
+
+    /**
+     * 方法描述：跳转至本Activity
+     *
+     * @param activity     发起跳转的Activity
+     * @param webViewUrl   WebView的url
+     * @param webViewTitle WebView页面的标题
+     */
+    public static void openWebViewActivity(Activity activity, String webViewUrl, String webViewTitle, String userId, String token) {
+        Intent intent = new Intent(activity, BaseWebViewActivity.class);
+        intent.putExtra("webview_url", webViewUrl);
+        intent.putExtra("webview_title", webViewTitle);
+        if (userId != null) {
+            intent.putExtra("userid", userId);
+        }
+        if (token != null) {
+            intent.putExtra("token", token);
+        }
+        activity.startActivity(intent);
+    }
+
+    public static void openWebViewActivity(Activity activity, String webViewUrl, String webViewTitle, String userId, String token, String account) {
+        Intent intent = new Intent(activity, BaseWebViewActivity.class);
+        intent.putExtra("webview_url", webViewUrl);
+        intent.putExtra("webview_title", webViewTitle);
+        if (userId != null) {
+            intent.putExtra("userid", userId);
+        }
+        if (token != null) {
+            intent.putExtra("token", token);
+        }
+        if (token != null) {
+            intent.putExtra("account", account);
+        }
+        activity.startActivity(intent);
+    }
+
+    public static void openWebViewActivity(Activity activity, String webViewUrl, String webViewTitle) {
+        Intent intent = new Intent(activity, BaseWebViewActivity.class);
+        intent.putExtra("webview_url", webViewUrl);
+        intent.putExtra("webview_title", webViewTitle);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 方法描述：预警
+     *
+     * @param activity     发起跳转的Activity
+     * @param webViewUrl   WebView的url
+     * @param webViewTitle WebView页面的标题
+     * @param userId       用户id
+     * @param lat          维度
+     * @param lng          经度
+     */
+    public static void openWebViewActivity(Activity activity, String webViewUrl, String webViewTitle, String userId, String lat, String lng, String area, String token) {
+        Intent intent = new Intent(activity, BaseWebViewActivity.class);
+        intent.putExtra("webview_url", webViewUrl);
+        intent.putExtra("webview_title", webViewTitle);
+        if (userId != null) {
+            intent.putExtra("userid", userId);
+        }
+        if (lat != null && lng != null && area != null) {
+            intent.putExtra("lat", lat);
+            intent.putExtra("lng", lng);
+            intent.putExtra("area", area);
+        }
+        if (token != null) {
+            intent.putExtra("token", token);
+        }
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_base_webview;
+    }
+
+    @Override
+    protected boolean isShowTitleBar() {
+        return false;
+    }
+
+    @Override
+    protected void inits() {
+        getData();
+        initViews();
+        initDatas();
+        loadData();
+        initListener();
+    }
+
+    /**
+     * 方法描述：初始化WebView
+     */
+    private void initViews() {
+        mWebView = findView(R.id.progress_webview);
+        webviewTitle = findView(R.id.tv_title);
+        mImageViewReturn = findView(R.id.iv_return);
+
+
+        //web资源
+        //mWebView.loadUrl(webViewUrl);
+    }
+
+    /**
+     * 方法描述：接收数据
+     */
+    private void getData() {
+        webViewUrl = getIntent().getStringExtra("webview_url");
+
+        title = getIntent().getStringExtra("webview_title");
+        userId = getIntent().getStringExtra("userid");
+        token = getIntent().getStringExtra("token");
+        account = getIntent().getStringExtra("account");
+
+        lat = getIntent().getStringExtra("lat");
+        lng = getIntent().getStringExtra("lng");
+        area = getIntent().getStringExtra("area");
+    }
+
+    /**
+     * 方法描述：加载数据
+     */
+    private void loadData() {
+        if (!TextUtils.isEmpty(title)) {
+            webviewTitle.setText(title);
+
+        }
+
+        //先判断是否有问号
+        //有问号  拼&
+        //无问号 拼？
+
+        if (webViewUrl.contains("?")) {  //url已带参数
+            if (account != null) {  //module
+                mWebView.loadUrl(webViewUrl + "&userid=" + userId + "&account=" + account + "&token=" + token);
+                LogManager.d(TAG, "WebViewUrl:" + webViewUrl + "&userid=" + userId + "&account=" + account + "&token=" + token);
+            }
+            if (account == null) {  //list
+                mWebView.loadUrl(webViewUrl + "&userid=" + userId + "&token=" + token);
+                LogManager.d(TAG, "WebViewUrl:" + webViewUrl + "&userid=" + userId + "&token=" + token);
+            }
+        } else {
+            if (!TextUtils.isEmpty(webViewUrl) && !TextUtils.isEmpty(userId) && !TextUtils.isEmpty(lat) && !TextUtils.isEmpty(lng) && !TextUtils.isEmpty(area) && !TextUtils.isEmpty(token)) {  //预警
+                mWebView.loadUrl(webViewUrl + "?userid=" + userId + "&lat=" + lat + "&lng=" + lng + "&area=" + area + "&token=" + token);
+                LogManager.d(TAG, "WebViewUrl:" + webViewUrl + "?userid=" + userId + "&lat=" + lat + "&lng=" + lng + "&area=" + area + "&token=" + token);
+            }
+            if (account != null) {  //module
+                mWebView.loadUrl(webViewUrl + "?userid=" + userId + "&account=" + account + "&token=" + token);
+                LogManager.d(TAG, "WebViewUrl:" + webViewUrl + "?userid=" + userId + "&account=" + account + "&token=" + token);
+            }
+            if (account == null) {  //list
+                mWebView.loadUrl(webViewUrl + "?userid=" + userId + "&token=" + token);
+                LogManager.d(TAG, "WebViewUrl:" + webViewUrl + "?userid=" + userId + "&token=" + token);
+            }
+
+        }
+
+    }
+
+    private void initDatas() {
+
+    }
+
+    private void initListener() {
+        mImageViewReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mImageViewReturn.startAnimation(AnimationUtil.ImageViewAnimationBigOrSmall());
+                finish();
+            }
+        });
+    }
+
+    /**
+     * 方法描述：改写物理按键——返回的逻辑
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mWebView.canGoBack()) {
+                mWebView.goBack();//返回上一页面
+                return true;
+            } else {
+                finish();
+
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+}

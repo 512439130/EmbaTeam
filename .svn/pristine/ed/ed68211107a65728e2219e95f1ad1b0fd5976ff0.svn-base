@@ -1,0 +1,176 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+MERGED from [:LibEasyPermission] E:\workspace\android_workspace\EmbaTeam\LibEasyPermission\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PersistentCookieJar-v1.0.1.aar\e61d59bd09076076a2aa085d12b5ce66\AndroidManifest.xml:2:1-14:12
+MERGED from [:LibCircleImageView] E:\workspace\android_workspace\EmbaTeam\LibCircleImageView\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:LibOkhttp] E:\workspace\android_workspace\EmbaTeam\LibOkhttp\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:LibPopup] E:\workspace\android_workspace\EmbaTeam\LibPopup\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:LibPullToRefresh] E:\workspace\android_workspace\EmbaTeam\LibPullToRefresh\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:LibViewPagerIndicator] E:\workspace\android_workspace\EmbaTeam\LibViewPagerIndicator\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.0.0-alpha1.aar\85939e122b8cbd16f070d1d10e02bdc9\AndroidManifest.xml:17:1-26:12
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:17:1-31:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+	package
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:3:5-33
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:1-23:12
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:5:5-76
+	android:name
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:5:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:6:5-75
+	android:name
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:6:22-72
+application
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:7:5-21:19
+MERGED from [:LibEasyPermission] E:\workspace\android_workspace\EmbaTeam\LibEasyPermission\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-20
+MERGED from [:LibEasyPermission] E:\workspace\android_workspace\EmbaTeam\LibEasyPermission\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-20
+MERGED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PersistentCookieJar-v1.0.1.aar\e61d59bd09076076a2aa085d12b5ce66\AndroidManifest.xml:12:5-20
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PersistentCookieJar-v1.0.1.aar\e61d59bd09076076a2aa085d12b5ce66\AndroidManifest.xml:12:5-20
+MERGED from [:LibCircleImageView] E:\workspace\android_workspace\EmbaTeam\LibCircleImageView\build\intermediates\manifests\full\debug\AndroidManifest.xml:9:5-20
+MERGED from [:LibCircleImageView] E:\workspace\android_workspace\EmbaTeam\LibCircleImageView\build\intermediates\manifests\full\debug\AndroidManifest.xml:9:5-20
+MERGED from [:LibPopup] E:\workspace\android_workspace\EmbaTeam\LibPopup\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:LibPopup] E:\workspace\android_workspace\EmbaTeam\LibPopup\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:LibViewPagerIndicator] E:\workspace\android_workspace\EmbaTeam\LibViewPagerIndicator\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-14:19
+MERGED from [:LibViewPagerIndicator] E:\workspace\android_workspace\EmbaTeam\LibViewPagerIndicator\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:25:5-29:19
+	android:supportsRtl
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:10:9-41
+	android:roundIcon
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:11:9-54
+	android:icon
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:9:9-43
+	android:allowBackup
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:13:9-40
+activity#com.fala.emba.team.activity.MainActivity
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:14:9-20:20
+	android:name
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:14:19-56
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml:18:27-74
+uses-sdk
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+MERGED from [:LibEasyPermission] E:\workspace\android_workspace\EmbaTeam\LibEasyPermission\build\intermediates\manifests\full\debug\AndroidManifest.xml:8:5-10:41
+MERGED from [:LibEasyPermission] E:\workspace\android_workspace\EmbaTeam\LibEasyPermission\build\intermediates\manifests\full\debug\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:21:5-23:78
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PersistentCookieJar-v1.0.1.aar\e61d59bd09076076a2aa085d12b5ce66\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PersistentCookieJar-v1.0.1.aar\e61d59bd09076076a2aa085d12b5ce66\AndroidManifest.xml:8:5-10:41
+MERGED from [:LibCircleImageView] E:\workspace\android_workspace\EmbaTeam\LibCircleImageView\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:LibCircleImageView] E:\workspace\android_workspace\EmbaTeam\LibCircleImageView\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:LibOkhttp] E:\workspace\android_workspace\EmbaTeam\LibOkhttp\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:LibOkhttp] E:\workspace\android_workspace\EmbaTeam\LibOkhttp\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:LibPopup] E:\workspace\android_workspace\EmbaTeam\LibPopup\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:LibPopup] E:\workspace\android_workspace\EmbaTeam\LibPopup\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:LibPullToRefresh] E:\workspace\android_workspace\EmbaTeam\LibPullToRefresh\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:LibPullToRefresh] E:\workspace\android_workspace\EmbaTeam\LibPullToRefresh\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:LibViewPagerIndicator] E:\workspace\android_workspace\EmbaTeam\LibViewPagerIndicator\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:LibViewPagerIndicator] E:\workspace\android_workspace\EmbaTeam\LibViewPagerIndicator\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.0.0-alpha1.aar\85939e122b8cbd16f070d1d10e02bdc9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.0.0-alpha1.aar\85939e122b8cbd16f070d1d10e02bdc9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:21:5-23:58
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		ADDED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+		INJECTED from E:\workspace\android_workspace\EmbaTeam\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:23:9-25:44
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.0.0-beta1.aar\1234146a507f19065440b65da201945d\AndroidManifest.xml:23:9-25:44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:23:9-25:44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.0.0-beta1.aar\01720a662d9e85d0dcad95314120bd8c\AndroidManifest.xml:23:9-25:44
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-v4:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.0.0-beta1.aar\9b5af20a1dd4a5ff889df578d9efb13a\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-media-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.0.0-beta1.aar\b3372c61113a9a36dd6cb046503d0d65\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-fragment:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.0.0-beta1.aar\690a9017c562fbb079605823c79b5822\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-core-utils:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.0.0-beta1.aar\77c0d5006ced4005e4a8261942fce876\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-core-ui:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.0.0-beta1.aar\2d2e218c1173e7ae2abed5a6581ea972\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:26:9-28:44
+MERGED from [com.android.support:support-compat:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.0.0-beta1.aar\6e89acee4b03d4f3a55e44580b1bdcbc\AndroidManifest.xml:26:9-28:44
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:28:13-41
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-beta1.aar\905e0c269942f7b9f74e4f68d900b22a\AndroidManifest.xml:27:13-51

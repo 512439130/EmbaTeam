@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EmbaTeam.iml" filepath="$PROJECT_DIR$/EmbaTeam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibCircleImageView/LibCircleImageView.iml" filepath="$PROJECT_DIR$/LibCircleImageView/LibCircleImageView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibOkhttp/LibOkhttp.iml" filepath="$PROJECT_DIR$/LibOkhttp/LibOkhttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibPickerView/LibPickerView.iml" filepath="$PROJECT_DIR$/LibPickerView/LibPickerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibPopup/LibPopup.iml" filepath="$PROJECT_DIR$/LibPopup/LibPopup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibSmartRefreshHeader/LibSmartRefreshHeader.iml" filepath="$PROJECT_DIR$/LibSmartRefreshHeader/LibSmartRefreshHeader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibSmartRefreshLayout/LibSmartRefreshLayout.iml" filepath="$PROJECT_DIR$/LibSmartRefreshLayout/LibSmartRefreshLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibViewPagerIndicator/LibViewPagerIndicator.iml" filepath="$PROJECT_DIR$/LibViewPagerIndicator/LibViewPagerIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

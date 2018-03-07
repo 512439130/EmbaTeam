@@ -1,0 +1,12 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibCircleImageView\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "map": []
+        },
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibCircleImageView\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": []
+        }
+    ]
+}

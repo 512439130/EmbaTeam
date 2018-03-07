@@ -1,0 +1,94 @@
+package com.fala.profession.professionnet.utils.animation;
+
+import android.content.Context;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+
+import com.fala.profession.professionnet.R;
+import com.nineoldandroids.animation.AnimatorInflater;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
+
+/**
+ * Created by SoMustYY on 2017/9/5.
+ * 图片点击动画
+ */
+
+public class AnimationUtil {
+    /**
+     * 图片点击效果（变小）
+     *
+     * @return
+     */
+    public static AnimationSet ImageViewAnimationBigOrSmall() {
+        AnimationSet set = new AnimationSet(true);
+        ScaleAnimation sAnimation = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        sAnimation.setFillAfter(true);
+        AlphaAnimation alAnimation = new AlphaAnimation(1.0f, 0f);
+        alAnimation.setFillAfter(true);
+
+        set.addAnimation(sAnimation);
+        set.addAnimation(alAnimation);
+
+        set.setDuration(300);
+        return set;
+    }
+
+    /**
+     * 图片点击效果（变大）
+     *
+     * @return
+     */
+    public static AnimationSet ImageViewAnimationSmallOrBig() {
+        AnimationSet set = new AnimationSet(true);
+        ScaleAnimation sAnimation = new ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        sAnimation.setFillAfter(true);
+        AlphaAnimation alAnimation = new AlphaAnimation(1.0f, 0f);
+        alAnimation.setFillAfter(true);
+
+        set.addAnimation(sAnimation);
+        set.addAnimation(alAnimation);
+
+        set.setDuration(300);
+        return set;
+    }
+
+
+    /**
+     * ��ImageView
+     *
+     * @param view
+     */
+    public static void addScaleAnimation(View view) {
+        float[] vaules = new float[]{0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 0.9f, 0.8f, 0.7f, 0.8f, 0.9f, 1.0f};
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(ObjectAnimator.ofFloat(view, "scaleX", vaules),
+                ObjectAnimator.ofFloat(view, "scaleY", vaules));
+        set.setDuration(500);
+        set.start();
+    }
+
+    /**
+     * 循环淡入效果
+     *
+     * @param view
+     */
+    public static void infiniteFadeInAnimation(Context context, final View view) {
+        ValueAnimator fader = (ValueAnimator) AnimatorInflater.
+                loadAnimator(context, R.animator.zhxq_view_fade_in_repeat);
+        fader.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                view.getBackground().setAlpha((int) ((Float) animation.getAnimatedValue() * 255f + .5f));
+            }
+        });
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(fader);
+        set.start();
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSearchView\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-sw600dp-v21\\values-sw600dp-v21.xml",
+            "map": [
+                {
+                    "source": "E:\\workspace\\android_workspace\\EmbaTeam\\LibSearchView\\build\\intermediates\\bundles\\debug\\res\\values-sw600dp-v21\\values-sw600dp-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,109,174,242,312",
+                        "endColumns": "53,64,67,69,56",
+                        "endOffsets": "104,169,237,307,364"
+                    }
+                }
+            ]
+        }
+    ]
+}

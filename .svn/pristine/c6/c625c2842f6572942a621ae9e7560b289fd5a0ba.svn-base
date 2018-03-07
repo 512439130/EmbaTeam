@@ -1,0 +1,26 @@
+package com.fala.emba.team.constant;
+
+import android.os.Environment;
+
+/**
+ * Created by SoMustYY on 2017/10/4.
+ */
+
+public class Consts {
+
+    //用户头像名称
+    public static final String USER_IMAGE_NAME = "user_image.png";
+
+    public static final String FILE_PATH = Environment.getExternalStorageDirectory().toString();
+
+
+    //token相关
+    public static final String HISTORY_TIME = "history_time";
+    public static final String TOKEN = "token";
+    public static final String LOGINCODE = "LOGINCODE";
+    public static final String PASSWORD = "PASSWORD";
+    public static final String USERINFO = "USER_INFO";
+    public static final String LOGINCODE_HISTORY = "LOGINCODE_HISTORY";
+    public static final String IS_LOGIN = "IS_LOGIN";
+    public static final String FIRST_START_APP = "FIRST_START_APP";
+}

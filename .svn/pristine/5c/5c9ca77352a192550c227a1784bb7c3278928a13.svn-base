@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8f000000">
+
+    <RelativeLayout
+        android:id="@+id/popup_anima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_centerInParent="true">
+
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.2"
+            android:gravity="center"
+            />
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/tv_content"
+            android:background="@color/line_bg"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/line2">
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textColor="#bfbfbf"
+                android:padding="3dp"
+                android:background="@drawable/selector_text_bg_theme_white_with_corner"
+                android:textSize="16sp"
+                android:text="取消"/>
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textColor="@color/button_text_default"
+
+                android:textSize="16sp"
+                android:background="@drawable/selector_text_bg_theme_white_with_corner"
+
+                android:text="XXX"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

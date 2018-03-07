@@ -1,0 +1,93 @@
+package com.fala.emba.team.constant;
+
+/**
+ * Created by SoMustYY on 2017/10/1.
+ * 请求接口管理类
+ */
+
+public class RequestConst {
+    /**
+     * 机器操作系统
+     */
+    public static final String OS = "android";
+    /**
+     * 配置文件的名称（Sharepreference）
+     */
+    public static final String SP_XML_NAME = "fala_emba";
+
+
+    /**
+     * 接口请求状态码
+     */
+
+    public static final String APP_STATUS_0 = "0";
+    public static final String APP_STATUS_T = "1";
+    public static final String APP_STATUS_F = "-1";
+
+
+    //映射服务器
+    //public static final String APP_REALM_NAME = "http://unknown.free.ngrok.cc";
+//    public static final String APP_REALM_NAME = "http://192.168.1.116:8080";
+    //测试服务器
+//    public static final String APP_REALM_NAME = "http://wms.fala.cn";
+
+    //正式服务器
+    public static final String APP_REALM_NAME = "http://47.104.28.199";
+
+    //模块
+    public static final String APP_MODULE = "/teacher/";
+
+    public static final String APP_SERVER = APP_REALM_NAME + APP_MODULE;
+
+    //头像全路径
+    public static final String APP_HEADER_URL = APP_REALM_NAME + APP_MODULE + "upload/userImage/";
+
+
+    //功能接口(post)
+    //登录(保证Session)
+    public static final String app_login_session = APP_SERVER + "login.do";
+    //登录
+    public static final String app_login = APP_SERVER + "user/login.do";
+    //保存手机号
+    public static final String app_save_phone = APP_SERVER + "userInfo/savePhone.do?";
+    //通过手机号获取用户信息
+    public static final String app_get_user_by_phone = APP_SERVER + "userInfo/getUserByPhone.do?";
+    //修改密码
+    public static final String app_modify_pwd = APP_SERVER + "userInfo/modifyPwdByPhone.do?";
+    //注销
+    public static final String app_logout = APP_SERVER + "logout.do?";
+
+    //上传头像
+    public static final String app_upload_head = APP_SERVER + "userInfo/saveImage.do?";
+
+
+
+    //const
+    //teacher
+    public static final String teacher_ketangyuxi = APP_SERVER + "previewjob/tshow.do?";
+    public static final String teacher_buzhizuoye = APP_SERVER + "homeworkjob/tshow.do?";
+    public static final String teacher_pigaizuoye = APP_SERVER + "handinhomework/correctTaskList.do?";
+    public static final String teacher_ketanghudong = APP_SERVER + "interactionjob/interactionTaskList.do?";
+    public static final String teacher_liuyanguanli = APP_SERVER + "message/messageJobList.do?";
+    public static final String teacher_banjidongtai = APP_SERVER + "dynamicjob/dynamicList.do?";
+
+
+//    public static final String teacher_ketangyuxi = "http://www.baidu.com?";
+//    public static final String teacher_buzhizuoye = "http://www.wanandroid.com?";
+//    public static final String teacher_pigaizuoye = "http://www.gd12121.com/specht/hztf/index.html?";
+//    public static final String teacher_ketanghudong = "http://weixin.hzmb.gov.cn/hzinterface/hzwap/dttj.html?";
+//    public static final String teacher_liuyanguanli = "http://news.sina.com.cn?";
+//    public static final String teacher_banjidongtai = "http://www.people.com.cn?";
+
+
+
+
+    //student
+    public static final String student_ketangyuxi = APP_SERVER + "previewjob/stuTaskList.do?";
+    public static final String student_zuoyeguanli = APP_SERVER + "homeworkjob/stuTaskList.do?";
+    public static final String student_ketanghudong = APP_SERVER + "interactionjob/interactionStuTaskList.do?";
+    public static final String student_banjidongtai = APP_SERVER + "dynamicjob/dynamicList.do?";
+    public static final String student_banjixiaoxi = APP_SERVER + "message/messageJobStuList.do?";
+
+
+}

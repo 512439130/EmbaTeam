@@ -1,0 +1,505 @@
+package com.fala.emba.team.base.activity;
+
+
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.activity.LoginActivity;
+import com.fala.emba.team.activity.StartActivity;
+import com.fala.emba.team.app.AppManager;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.util.AndroidWorkaround;
+import com.fala.emba.team.util.AnimationUtil;
+import com.fala.emba.team.util.DisplayUtils;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.fala.emba.team.view.popup.FullScreenPopup;
+import com.yy.http.okhttp.OkHttpUtils;
+
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
+
+
+/**
+ * 所有Activity的基类
+ * Created by SoMustYY on 2017/7/4.
+ */
+public abstract class BaseActivity extends AppCompatActivity implements BGASwipeBackHelper.Delegate{
+    private static final String TAG = "BaseActivity";
+
+    private RelativeLayout llTitleBar;
+    private FrameLayout flBack;
+    protected TextView tvTitle;
+    protected TextView tvTitleRight;
+
+    public Dialog mLoadingDialog;
+
+    public FullScreenPopup mLoginOvertimePopup;
+    protected Activity mActivity;
+
+    protected BGASwipeBackHelper mSwipeBackHelper;
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
+        // 在 super.onCreate(savedInstanceState) 之前调用该方法
+        initSwipeBackFinish();
+
+        super.onCreate(savedInstanceState);
+        mActivity = this;
+        isShowStatus(isShowStatus());
+        setScreenDirection(false); // 强制竖屏
+
+        setContentView(getLayoutId());  //填充布局
+        setTranslucentStatus();
+        mLoadingDialog = createLoadingDialog(this);
+        flBack = findView(R.id.fl_back);
+        tvTitle = findView(R.id.tv_title);
+        tvTitleRight = findView(R.id.tv_title_right);
+        llTitleBar = findView(R.id.id_title_bar);
+        initOverTimeDialog();  //
+        if (llTitleBar != null) {
+            llTitleBar.setBackgroundColor(setTitleBarColorHex());
+//            ViewGroup.LayoutParams layoutParams = llTitleBar.getLayoutParams();
+//            layoutParams.height = DisplayUtils.dp2px(this,100);
+//            llTitleBar.setLayoutParams(layoutParams);
+        }
+        if (isShowBacking() && flBack != null) {
+            showBack();
+        }
+
+        if (isShowTitleText() && tvTitle != null && getTitleText() != null) {
+            //getTitle()的值是activity的android:lable属性值
+            tvTitle.setVisibility(View.VISIBLE);
+            tvTitle.setText(getTitleText());
+        } else if (tvTitle != null && getTitleText() == null) {
+            tvTitle.setVisibility(View.INVISIBLE);
+        }
+
+        if (isShowTvRight() && tvTitleRight != null) {
+            //getTitle()的值是activity的android:lable属性值
+            tvTitleRight.setVisibility(View.VISIBLE);
+        }
+
+        inits();
+        //华为机底部虚拟键适配
+        if (AndroidWorkaround.checkDeviceHasNavigationBar(this)) {
+            AndroidWorkaround.assistActivity(findViewById(android.R.id.content));
+        }
+        AppManager.getAppManager().addActivity(this);
+    }
+
+    private void initOverTimeDialog() {
+        mLoginOvertimePopup = new FullScreenPopup(this, new FullScreenPopup.CallBack() {
+            @Override
+            public void submit() {
+                AppManager.getAppManager().AppExit(getApplicationContext());
+                AppManager.getAppManager().finishAllActivity();
+                openActivity(StartActivity.class);
+            }
+        });
+    }
+
+
+
+    /**
+     * 初始化滑动返回。在 super.onCreate(savedInstanceState) 之前调用该方法
+     */
+    private void initSwipeBackFinish() {
+        mSwipeBackHelper = new BGASwipeBackHelper(this, this);
+
+        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
+        // 下面几项可以不配置，这里只是为了讲述接口用法。
+
+        // 设置滑动返回是否可用。默认值为 true
+        mSwipeBackHelper.setSwipeBackEnable(true);
+        // 设置是否仅仅跟踪左侧边缘的滑动返回。默认值为 true
+        mSwipeBackHelper.setIsOnlyTrackingLeftEdge(true);
+        // 设置是否是微信滑动返回样式。默认值为 true
+        mSwipeBackHelper.setIsWeChatStyle(true);
+        // 设置阴影资源 id。默认值为 R.drawable.bga_sbl_shadow
+        mSwipeBackHelper.setShadowResId(R.drawable.bga_sbl_shadow);
+        // 设置是否显示滑动返回的阴影效果。默认值为 true
+        mSwipeBackHelper.setIsNeedShowShadow(true);
+        // 设置阴影区域的透明度是否根据滑动的距离渐变。默认值为 true
+        mSwipeBackHelper.setIsShadowAlphaGradient(true);
+        // 设置触发释放后自动滑动返回的阈值，默认值为 0.3f
+        mSwipeBackHelper.setSwipeBackThreshold(0.3f);
+        // 设置底部导航条是否悬浮在内容上，默认值为 false
+        mSwipeBackHelper.setIsNavigationBarOverlap(false);
+    }
+
+
+    /**
+     * 是否显示状态栏
+     *
+     * @param isShow true 显示，false 隐藏
+     */
+    protected void isShowStatus(boolean isShow) {
+        if (isShow) {
+            supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//继承AppCompatActivity使用
+        } else {
+            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
+            supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//继承AppCompatActivity使用 去掉顶部状态栏
+        }
+
+
+    }
+
+
+    /**
+     * 设置状态栏透明(沉浸式效果)
+     */
+    private void setTranslucentStatus() {
+        // 5.0以上系统状态栏透明
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //设置状态栏颜色
+            window.setStatusBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+    }
+
+    /**
+     * 设置横屏模式
+     */
+    protected void setScreenDirection(boolean type) {
+        if (type) {  //horizontal
+            horizontalDirection();
+        } else {//vertical
+            verticalDirection();
+        }
+    }
+
+    /**
+     * 强制竖屏
+     */
+    private void verticalDirection() {
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+    /**
+     * 强制横屏
+     */
+    private void horizontalDirection() {
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+    }
+
+
+    /**
+     * 省去强转findviewById
+     *
+     * @param id
+     * @param <T>
+     * @return
+     */
+    protected <T extends View> T findView(int id) {
+        return (T) findViewById(id);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
+    /**
+     * 版本号小于21的后退按钮图片
+     */
+    private void showBack() {
+        flBack.setVisibility(View.VISIBLE);
+        flBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flBack.startAnimation(AnimationUtil.ImageViewAnimationBigOrSmall());
+                finish();
+            }
+        });
+    }
+
+
+    /**
+     * 是否显示后退按钮,默认显示,可在子类重写该方法.
+     *
+     * @return
+     */
+    protected boolean isShowBacking() {
+        return true;
+    }
+
+    /**
+     * 是否中间文字
+     *
+     * @return
+     */
+    protected boolean isShowTitleText() {
+        return true;
+    }
+
+
+    /**
+     * 是否右边text
+     *
+     * @return
+     */
+    protected boolean isShowTvRight() {
+        return true;
+    }
+
+    private int defaultColor = Color.parseColor("#00b4ff");  //默认颜色
+
+    /**
+     * 设置状态栏的背景颜色
+     *
+     * @return
+     */
+    protected int setTitleBarColorHex() {
+        return defaultColor;
+    }
+
+
+    /**
+     * 设置标题
+     *
+     * @return
+     */
+    protected abstract String getTitleText();
+
+    /**
+     * 是否显示状态栏
+     */
+    protected abstract boolean isShowStatus();
+
+    /**
+     * this activity layout res
+     * 设置layout布局,在子类重写该方法.
+     *
+     * @return res layout xml id
+     */
+    protected abstract int getLayoutId();
+
+    /**
+     * 初始化
+     */
+    protected abstract void inits();
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
+        ToastManager.cancel();
+        OkHttpUtils.getInstance().cancelTag(this);
+    }
+
+
+    /**工具方法**/
+
+
+    /**
+     * 跳转一个Activity
+     *
+     * @param pClass
+     */
+    protected void openActivity(Class<?> pClass) {
+        Intent intent = new Intent();
+        intent.setClass(this, pClass);
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转一个新Activity，在新Activity关闭后返回数据
+     *
+     * @param pClass
+     * @param requestCode
+     */
+    protected void openActivityForResult(Class<?> pClass, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, pClass);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 跳转一个新Activity,并携带数据
+     *
+     * @param pClass
+     * @param bundle
+     */
+    protected void showActivity(Class<?> pClass, Bundle bundle) {
+        // TODO Auto-generated method stub
+        Intent intent = new Intent(this, pClass);
+        intent.setClass(this, pClass);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转到指定Activity并且finish前者Activity
+     *
+     * @param pClass 类class
+     */
+    protected void openActivityFinish(Class<?> pClass) {
+        Intent intent = new Intent();
+        intent.setClass(this, pClass);
+        startActivity(intent);
+        this.finish();
+    }
+
+    /**
+     * 自定义进度加载
+     *
+     * @param context
+     * @return
+     */
+    public static Dialog createLoadingDialog(Context context) {
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.layout_loading_dialog, null); // 得到加载view
+        LinearLayout layout = v.findViewById(R.id.dialog_view); // 加载布局
+        Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
+
+        loadingDialog.setCancelable(false); // 不可以用"返回键"取消
+
+        Window dialogWindow = loadingDialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        dialogWindow.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialogWindow.setGravity(Gravity.CENTER);
+        //显示的坐标
+        lp.x = 0;
+        lp.y = 400;
+        //dialog的大小
+        lp.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        dialogWindow.setAttributes(lp);
+        loadingDialog.setContentView(layout);
+
+        return loadingDialog;
+    }
+
+
+    private void setDialogSize(Dialog dg) {
+        Window dialogWindow = dg.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        dialogWindow.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+        //显示的坐标
+        lp.x = 150;
+        lp.y = 50;
+        //dialog的大小
+        lp.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        dialogWindow.setAttributes(lp);
+    }
+
+
+    /**
+     * 设置app字体不跟随系统
+     * @param newConfig
+     */
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.fontScale != 1)//非默认值
+            getResources();
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public Resources getResources() {
+        Resources res = super.getResources();
+        if (res.getConfiguration().fontScale != 1) {//非默认值
+            Configuration newConfig = new Configuration();
+            newConfig.setToDefaults();//设置默认
+            res.updateConfiguration(newConfig, res.getDisplayMetrics());
+        }
+        return res;
+    }
+
+    /**
+     * 打开设置界面
+     */
+    @SuppressLint("ObsoleteSdkInt")
+    protected void startSettingActivity() {
+        Intent intent;
+        if (android.os.Build.VERSION.SDK_INT > 10) {
+            intent = new Intent(Settings.ACTION_SETTINGS);
+        } else {
+            intent = new Intent();
+            ComponentName component = new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
+            intent.setComponent(component);
+            intent.setAction("android.intent.action.VIEW");
+        }
+        startActivity(intent); // 设置完成后返回到原来的界面
+    }
+
+
+    /**
+     * 是否支持滑动返回。这里在父类中默认返回 true 来支持滑动返回，如果某个界面不想支持滑动返回则重写该方法返回 false 即可
+     *
+     * @return
+     */
+    @Override
+    public boolean isSupportSwipeBack() {
+        return true;
+    }
+
+    /**
+     * 正在滑动返回
+     *
+     * @param slideOffset 从 0 到 1
+     */
+    @Override
+    public void onSwipeBackLayoutSlide(float slideOffset) {
+    }
+
+    /**
+     * 没达到滑动返回的阈值，取消滑动返回动作，回到默认状态
+     */
+    @Override
+    public void onSwipeBackLayoutCancel() {
+    }
+
+    /**
+     * 滑动返回执行完毕，销毁当前 Activity
+     */
+    @Override
+    public void onSwipeBackLayoutExecuted() {
+        mSwipeBackHelper.swipeBackward();
+    }
+
+
+}

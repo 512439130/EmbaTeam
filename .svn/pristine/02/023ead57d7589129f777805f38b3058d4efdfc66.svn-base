@@ -1,0 +1,95 @@
+package com.fala.emba.team.base.webview;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.util.AttributeSet;
+import android.view.Gravity;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.ProgressBar;
+
+/**
+ * BaseWebView
+ * Created by SoMustYY on 2017/7/22.
+ */
+
+public class BaseWebView extends WebView {
+    private ProgressBar progressbar;
+
+
+    public BaseWebView(Context context) {
+        super(context);
+    }
+
+    public BaseWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public BaseWebView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        //initProgressBar(context);
+        //initSetting();
+//        initWebViewClient();
+//        initWebChromeClient();
+
+//        setWebViewClient(mWebViewClient);
+        //setWebChromeClient(new WebChromeClient());  //进度条的webview
+    }
+
+
+
+
+
+    private void initProgressBar(Context context) {
+        progressbar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
+        progressbar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(context, 2), 0, 0));
+        //改变progressbar默认进度条的颜色（深红色）为Color.GREEN
+        progressbar.setProgressDrawable(new ClipDrawable(new ColorDrawable(Color.parseColor("#04d06f")), Gravity.LEFT, ClipDrawable.HORIZONTAL));
+        addView(progressbar);
+    }
+
+    /**
+     * 方法描述：启用支持javascript
+     */
+    private void initSetting() {
+        WebSettings settings = getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setSupportZoom(true);
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+    }
+
+    /**
+     * 方法描述：根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 类描述：显示WebView加载的进度情况
+     */
+    public class WebChromeClient extends android.webkit.WebChromeClient {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            if (newProgress == 100) {
+                progressbar.setVisibility(GONE);
+            } else {
+                if (progressbar.getVisibility() == GONE)
+                    progressbar.setVisibility(VISIBLE);
+
+                progressbar.setProgress(newProgress);
+            }
+            super.onProgressChanged(view, newProgress);
+        }
+    }
+
+}

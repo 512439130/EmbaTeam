@@ -1,0 +1,183 @@
+package com.fala.emba.team.activity;
+
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+
+import com.fala.emba.team.R;
+import com.fala.emba.team.base.activity.BaseActivity;
+import com.fala.emba.team.bean.UserComm;
+import com.fala.emba.team.constant.Consts;
+import com.fala.emba.team.constant.RequestConst;
+import com.fala.emba.team.util.DeviceNetUtil;
+import com.fala.emba.team.util.LogManager;
+import com.fala.emba.team.util.SharePrefUtil;
+import com.fala.emba.team.util.SystemUtil;
+import com.fala.emba.team.util.ToastManager;
+import com.google.gson.Gson;
+import com.yy.http.okhttp.OkHttpUtils;
+import com.yy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
+
+/**
+ *
+ * @author Administrator
+ * @date 2017/12/2
+ * 启动页
+ */
+
+public class StartActivity extends BaseActivity {
+    private static final String TAG = "StartActivity";
+    private Button btnStartApp;
+    final Handler handler = new Handler();
+    Runnable runnable = new Runnable(){
+        @Override
+        public void run() {
+            handler.removeCallbacks(runnable);
+            handler.postDelayed(this, 10000);
+        }
+    };
+
+    @Override
+    protected String getTitleText() {
+        return null;
+    }
+
+    @Override
+    protected boolean isShowStatus() {
+        return false;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_start;
+    }
+
+    @Override
+    protected void inits() {
+        //获得系统厂商
+        SharePrefUtil.saveString(mActivity,Consts.SYSTEM_FLAG, SystemUtil.getSystem());
+        initView();
+        initListener();
+        if (SharePrefUtil.getBoolean(mActivity, Consts.FIRST_START_APP, false)) {
+            if(SharePrefUtil.getBoolean(mActivity, Consts.IS_LOGIN, false)){
+                if (DeviceNetUtil.isConnected(mActivity)) {
+                    btnStartApp.setVisibility(View.GONE);
+                    updateUserInfoAndOpen();
+                } else {
+                    btnStartApp.setVisibility(View.VISIBLE);
+                    LogManager.e(TAG, Consts.CONNECTION_CLOSE);
+                    ToastManager.showShortText(mActivity, Consts.CONNECTION_CLOSE);
+                    startSettingActivity();
+                }
+            }else{
+                openActivityFinish(LoginActivity.class);
+            }
+        } else {//第一次安装APP
+            btnStartApp.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void test(){
+        Object girlFriend = new Object();
+        int i = girlFriend.hashCode();
+        System.out.print(i);
+    }
+
+
+
+    private void updateUserInfoAndOpen() {
+        UserComm.UserBean userBean = new Gson().fromJson(SharePrefUtil.getString(mActivity,Consts.USER_INFO,null), UserComm.UserBean.class);
+        initDelayed();
+        if(userBean != null){
+            mLoadingDialog.show();
+            OkHttpUtils
+                    .post()
+                    .url(RequestConst.APP_GET_USER_INFO)
+                    .addParams("phone",userBean.getPhone())
+                    .addToken(SharePrefUtil.getString(mActivity,Consts.TOKEN,null))
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            LogManager.e(TAG,e.getMessage());
+                            ToastManager.showShortText(mActivity,"系统错误，请联系管理员");
+                            mLoadingDialog.dismiss();
+                        }
+                        @Override
+                        public void onResponse(String response, int id) {
+                            LogManager.d(TAG,"token："+response);
+                            handler.removeCallbacks(runnable);
+                            mLoadingDialog.dismiss();
+                            //保存账号信息
+                            UserComm userComm = new Gson().fromJson(response, UserComm.class);
+                            if(userComm.getStatusCode() == 1){
+                                UserComm.UserBean userBean = userComm.getUser();
+                                String data = new Gson().toJson(userBean);
+                                SharePrefUtil.saveString(mActivity, Consts.USER_INFO, data);
+                                openActivityFinish(TabMainActivity.class);
+                            }else{
+                                switch (userComm.getStatusCode()) {
+                                    case -301:
+                                        //系统异常，请联系管理员
+                                        ToastManager.showShortText(mActivity, "系统异常，请联系管理员");
+                                        break;
+                                    case -302:
+                                        //校验失败，token无效
+                                        SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                        mLoginOvertimePopup.showPopupWindow();
+                                        break;
+                                    case -303:
+                                        //校验失败，token为空
+                                        SharePrefUtil.saveBoolean(mActivity, Consts.IS_LOGIN, false);
+                                        mLoginOvertimePopup.showPopupWindow();
+                                        break;
+                                    default:
+                                        if(userComm.getMessage() != null){
+                                            ToastManager.showShortText(mActivity, userComm.getMessage());
+                                        }
+                                        break;
+                                }
+                            }
+                        }
+                    });
+        }else{
+            ToastManager.showShortText(mActivity,"系统异常，请联系管理员");
+        }
+    }
+
+    /**
+     * 超过10秒后隐藏菊花条
+     */
+    private void initDelayed() {
+        // 打开定时器，执行操作
+        handler.postDelayed(runnable, 10000);
+    }
+
+    private void initView() {
+        btnStartApp = findView(R.id.btn_start_app);
+
+    }
+    private void initListener() {
+        btnStartApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityFinish(LoginActivity.class);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
+
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/popup_bg">
+
+
+    <RelativeLayout
+        android:id="@+id/popup_anima"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_stroke_input_conner"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+
+        <LinearLayout
+
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/pop_title"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/text_default"
+                android:textSize="17sp"
+                android:layout_marginTop="25dp"
+                android:maxLines="2"
+                android:minLines="2"
+
+                />
+
+
+
+            <EditText
+                android:id="@+id/ed_input"
+                android:layout_width="260dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@mipmap/icon_login_phone_logo"
+                android:drawablePadding="10dp"
+                android:paddingLeft="15dp"
+                android:inputType="number"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:background="@drawable/bg_stroke_edge_corner"/>
+            <View style="@style/line_style"/>
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:text="确定"
+                    android:textSize="16sp"
+                    android:textColor="@color/button_text_default"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/id_close"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+
+            android:layout_margin="5dp"
+            android:src="@mipmap/icon_popup_close"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
